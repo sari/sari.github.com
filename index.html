@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Emory Libraries Python Group</title>
+   <meta name="author" content="Emory Libraries Python Group" />
+   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+   <style type="text/css">
+/* Remove margins from the 'html' and 'body' tags, and ensure the page takes up full screen height */
+html, body {height:100%; margin:0; padding:0; font-family: Helvetica; font-size: 10pt;}
+/* Set the position and dimensions of the background image. */
+#page-background {position:fixed; top:0; left:0; width:100%; height:100%;}
+/* Specify the position and layering for the content that needs to appear in front of the background image. Must have a higher z-index value than the background image. Also add some padding to compensate for removing the margin from the 'html' and 'body' tags. */
+#content {position:relative; z-index:1; padding:10px;}
+</style>
+<!-- The above code doesn't work in Internet Explorer 6. To address this, we use a conditional comment to specify an alternative style sheet for IE 6 -->
+<!--[if IE 6]>
+<style type="text/css">
+html {overflow-y:hidden;}
+body {overflow-y:auto;}
+#page-background {position:absolute; z-index:-1;}
+#content {position:static;padding:10px;}
+</style>
+<![endif]-->
+</head>
+<body>
+<div id="page-background"><img src="images/paper.jpg" width="100%" height="100%" alt="paper"></div>
+<div id="content">
+
+<h3>Emory University Libraries Python Group</h3>
+<ul>
+<li>This week's <a href="#homework">homework</a>.</li>
+<li><a target="_blank" href="http://goo.gl/OnXMi">Tim's Notes</a></li>
+<li><a target="_blank" href="http://code.google.com/edu/languages/google-python-class/">Google Python Class</a></li>
+<li>Class Computer Preparation</a></li>
+
+<ol>
+<li>Login to Windows</li>
+<li>Launch Start->All Programs->Applications->Wordpad</li>
+
+<li>Launch Start->All Programs->Additional Applications->SSH Secure Shell->SSH Command Line</li>
+<li>In SSH Command Line<br>
+<pre>cd Users OR cd /Users (change directory to Users)
+dir (list the directory contents)
+cd netid OR cd /Users/netid (change directory into your netid folder)
+cd Desktop
+</pre></li>
+<li>In Wordpad copy code or save file from <a href="views/re.py">re.py</a> onto your Desktop</li>
+
+</ol>
+<li><a target="_blank" href="http://en.wikipedia.org/wiki/Shebang_%28Unix%29/">shebang</a> #! this setting in first line of python file will allow your code to execute without typing prefix "python"
+<ul>
+<li>Unix: #!/usr/bin/python -O</li>
+<li>Windows Classroom 314: #!c:\Python27\python</li>
+<li>Other Unix/Mac: #!/path/to/python</li>
+<li>Other Windows: #!\path\to\python</li>
+<li>Note: You can always prefix the executable file with "python" (python .\re.py) </li>
+</ul>
+<li>Variations to execute a python file:</a><ul>
+<li>shebang is defined -> .\re.py</a></li>
+<li>python is in the environment path -> python re.py</a></li>
+<li>python is <i>not</i> in the environment path -> c:\Python27\python re.py</a></li>
+</ul>
+</li>
+</ul>
+<table border=1 width=100% cellpadding="10"><tr><td>
+<h3>Chap Project</h3>
+<ul>
+<li><a target="_blank" href="http://www.washingtonpost.com/wp-srv/style/books/chapterone.htm">Washington Post Chapter One Website</a></li>
+<li><a target="_blank" href="projects/downloads/chapdata.zip">chapdata download</a></li>
+</ul>
+</tr></td></table>
+
+<h3>Classes</h3>
+<ul>
+<li>2011-08-18: Chap Project <br />
+
+<li>2011-07-14: Regular Expressions <a target="_blank" href="views/test_basic.txt">view</a>&nbsp;&nbsp;&nbsp;<a target="_blank" href="downloads/test_basic.py">download</a></li>
+<li>2011-07-28: Search URL Assignment <a target="_blank" href="views/searchurl.txt">view</a>&nbsp;&nbsp;&nbsp;<a target="_blank" href="downloads/searchurl.py">download</a> (updated)</li>
+<li>2011-08-11: Command Line Options Assignment: write a program with an optional "-x --offline" argument.</a>
+<li><a name="homework">2011-08-18: <font color="red">Homework</font></a> Download and run the following programs:</a>
+<ul>
+<li>Python Basic Program <a target="_blank" href="views/test_basic.txt">view</a>&nbsp;&nbsp;&nbsp;<a target="_blank" href="downloads/test_basic.py">download</a>
+<ul><li>Run the program> <span style="font-family: Courier New, monospace">python test_basic.py</span></li></ul>
+</li>
+<li>Python OptGet Program <a target="_blank" href="views/test_getopt.txt">view</a>&nbsp;&nbsp;&nbsp;<a target="_blank" href="downloads/test_getopt.py">download</a>
+<ul><li>Run the program> <span style="font-family: Courier New, monospace">python test_getopt.py</span></li>
+<li>Run the program> <span style="font-family: Courier New, monospace">python test_getopt.py -h</span></li>
+
+<li>Run the program> <span style="font-family: Courier New, monospace">python test_getopt.py -x</span></li>
+<li>Run the program> <span style="font-family: Courier New, monospace">python test_getopt.py -z</span></li></ul>
+<li>Python ArgParse Program <a target="_blank" href="views/test_argparse.txt">view</a>&nbsp;&nbsp;&nbsp;<a target="_blank" href="downloads/test_argparse.py">download</a>
+<ul><li>Run the program> <span style="font-family: Courier New, monospace">python test_argparse.py</span></li>
+<li>Run the program> <span style="font-family: Courier New, monospace">python test_argparse.py -n <i>YourName</i></span></li>
+<li>Run the program> <span style="font-family: Courier New, monospace">python test_argparse.py -n <i>YourName</i> -x</span></li>
+<li>Run the program> <span style="font-family: Courier New, monospace">python test_argparse.py -n <i>YourName</i> -z</span></li>
+<li>Run the program> <span style="font-family: Courier New, monospace">python test_argparse.py -z</span></li></ul>
+</li>
+</ul>
+<li><a name="homework">2011-08-25: <font color="red">Homework</font></a> Download and run the following:</a>
+  <ul>
+    <li>Chap Project <a target="_blank" href="views/chap.txt">view</a>&nbsp;&nbsp;&nbsp;<a target="_blank" href="projects/chap_project/chap.py">download</a> 
+      <ul>
+	<li>Run the program> <span style="font-family: Courier New, monospace">python chap.py -h</span></li>
+	<li>Run the program> <span style="font-family: Courier New, monospace">python chap.py</span></li>
+	<li>Run the program> <span style="font-family: Courier New, monospace">python chap.py -x</span></li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>2011-09-01:  Next Class GLW 314, 4-5pm</a>
+</li>
+
+
+</div>
+</body>
+</html>
+
+
+
