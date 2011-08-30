@@ -11,7 +11,7 @@ def load_data(offline):
 
   if offline:
     print "\nOffline\n"
-    text = open("data/chapterone.htm", 'rU').read()
+    text = open("../../data/chap_data/chapterone.htm", 'rU').read()
   else:
     print "\nOnline\n"
     req = urllib2.urlopen("http://www.washingtonpost.com/wp-srv/style/books/chapterone.htm")
@@ -21,11 +21,11 @@ def load_data(offline):
     
 
 def usage():
-  print "Usage: chap.py [-h --help] [-o --offline]\n"
+  print "Usage: chap.py [-h --help] [-x --offline]\n"
 
 def main():
   try:
-    opts, args = getopt.getopt(sys.argv[1:], "ho", ["help", "offline"])
+    opts, args = getopt.getopt(sys.argv[1:], "hx", ["help", "offline"])
   except getopt.GetoptError, err:
     # print help information and exit:
     print str(err) # will print something like "option -a not recognized"
@@ -37,7 +37,7 @@ def main():
     if o in ("-h", "--help"):
       usage()
       sys.exit()
-    elif o in ("-o", "--offline"):
+    elif o in ("-x", "--offline"):
       offline=True
     else:
       assert False, "unhandled option"
