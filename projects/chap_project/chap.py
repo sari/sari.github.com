@@ -5,74 +5,127 @@ import re
 import sys
 import urllib2
 
-def load_data(offline, debug=None):
-
-  if offline:
-    if debug: print "\nOffline\n"
-    text = open("../../data/chap_data/chapterone.htm", 'rU').read()
-  else:
-    if debug: print "\nOnline\n"
-    req = urllib2.urlopen("http://www.washingtonpost.com/wp-srv/style/books/chapterone.htm")
-    text = req.read()
-    
-  if debug: print "data length = [%d]\n" % len(text)
-  return text
-
-def parse_data(data, debug=None):
-  books = {}
-  pattern = r'<b><a href="http://www.washingtonpost.com/wp-srv/style/longterm/books/chap1/(\w+).htm">([^<]+)<'
-
-  if debug: print "\n\nBuilding book dictionary from website"
-  for match in re.finditer(pattern, data):
-    item = {}
-    key = match.group(1)
-    title = match.group(2)
-    if debug:  print "==> [%s] [%s]" % (key, title)
-    item['key'] = key
-    item['title'] = title
-    books[key] = item
-
-  if debug: print "\n\nSorted Book dictionary"
-  for k,v in sorted(books.items()):
-    if debug: print "--> %s %s" % (k, v)
-
-  if debug: print "\n%s chapters are available.\n" % (len(books))
-  return books
+books_url = 'http://www.washingtonpost.com/wp-srv/style/books/'
+chap1_url = 'http://www.washingtonpost.com/wp-srv/style/longterm/books/chap1/'
+review_url = 'http://www.washingtonpost.com/wp-dyn/content/article/' 
 
 def usage():
   print "Usage: chap.py [-h --help] [-x --offline] [-d --debug]\n"
 
-def parse_options(argv):
+def parse_options(argv=None):
+  """parse command line options"""  
   options={}
-  options['offline']=None
-  options['debug']=None
+  for key in ['offline', 'debug', 'error' , 'exit']: options[key] = None
+  
   try:
     opts, args = getopt.getopt(argv, "hxd", ["help", "offline", "debug"])
   except getopt.GetoptError, err:
-    # print help information and exit:
-    print str(err) # will print something like "option -a not recognized"
-    usage()
-    sys.exit(2)
-    
-  for o, a in opts:
+    options['exit']=True
+    options['error']=err   
+    return options 
+
+  for o, a in opts:   
     if o in ("-h", "--help"):
-      usage()
-      sys.exit()
+      options['exit']=True
     elif o in ("-x", "--offline"):
       options['offline'] = True
     elif o in ("-d", "--debug"):
       options['debug'] = True
     else:
       assert False, "unhandled option"
-      
-  if options['debug']: print "parse_options argv = %s\n" % argv
-      
+
   return options
 
+def load_data(key, options):
+  """load html page data"""
+  
+  global books_url, chap1_url
+  item_filename = "../../data/chap_data/%s.htm" % key  
+  if options['offline']:
+    if options['debug']: print "Offline"
+    text = open(item_filename, 'rU').read()
+  else:
+    if options['debug']: print "Online"
+    try:
+      if (key=='chapterone'): base_url=books_url
+      else: base_url=chap1_url
+      page_url = "%s%s.htm" % (base_url, key)
+      req = urllib2.urlopen(page_url)
+      text = req.read()
+    except Exception, err:  # timed out internet connection, get offline file.
+      print "No online connection, getting loading offline file."
+      text = open(item_filename, 'rU').read()
+    
+  if options['debug']: print "data length ['%s'] = [%d]\n" % (key, len(text))
+  return text 
+
+def parse_data(data, options):
+  """load chapter book data into book dictionary"""
+  global chap1_url, review_url
+  books = {}
+  if options['debug']: print "Building book dictionary from website"
+  
+  # Extract key and title from html source
+  pattern = r'<b><a href="'
+  pattern += '(%s)' % chap1_url	 	# group 1: Chap url prefix
+  pattern += '(\w+).htm">'		# group 2: key
+  pattern += '([^<]+)<[^<]+[^,]*,'	# group 3: title
+  pattern += '" (non)?fiction '		# group 4: type
+  pattern += 'by ([^<]+)<'		# group 5: author
+  pattern += '[aA <]+'			# bad data in crashcourse
+  pattern += 'href="(%s)' % review_url	# group 6: Review url prefix
+  pattern += '([0-9]+/[0-9]+/[0-9]+/)'	# group 7: date
+  pattern += '(\w+.html)">'		# group 8: review
+  for match in re.finditer(pattern, data):
+    item = {}
+    item['chap_url']=chap1_url + match.group(2).strip() + '.htm'
+    item['chap_file']=match.group(2).strip() + '.htm' 
+    item['key']=match.group(2)
+    item['title']=match.group(3)
+    item['type']= "nonfiction" if match.group(4)=="non" else "fiction"
+    item['author']=match.group(5).strip()
+    item['review']=review_url + match.group(7).strip() + match.group(8).strip()
+    books[match.group(2)]=item
+    
+  # Debug output 
+  if options['debug']:       
+    # output all items in book dictionary
+    for k,v in sorted(books.items()):
+      print "--> %s\n    %s\n" % (k, v) 
+
+    # output sample of book items
+    count = 0
+    for k,v in sorted(books.items()):
+      if (count>54): print "book['%s']" % (k)
+      item = v
+      for a in item:
+	 if (count>54): print "   book['%s']['%s']: '%s'" % (k, a, item[a])
+      count += 1    
+  return books
+ 
+
 def main():
-  options = parse_options(sys.argv[1:])  
-  data = load_data(options['offline'], options['debug'])
-  books = parse_data(data, options['debug'])
+  """Text mine the Washington Post Chapter One Data""" 
+  # Parse command line options
+  options = parse_options(sys.argv[1:])
+  if options['debug']: print "parse_options argv = %s" % sys.argv[1:]  
+  if options['exit']:
+    if options['error']: print options['error']
+    usage()
+    sys.exit(2)
+    
+  # Load the chapter one data
+  data = load_data('chapterone', options)
+  
+  # Parse the chapter one data list
+  books = parse_data(data, options)
+  
+  # Load and parse each chapter one item
+  for k,v in sorted(books.items()): 
+    item_data = load_data(k, options)
+    break 
+   
+  
   print "\nThere are %s books in the Washington Post Chapter One website\n" % (len(books))
 
 if __name__ == "__main__":

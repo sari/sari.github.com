@@ -1,36 +1,98 @@
-#!c:/Python27/bin
+#!c:/Python27	/bin;/usr/bin/python
 
 import unittest
+import getopt 
 from chap import load_data
 from chap import parse_data
+from chap import parse_options
 
 class TestChapFuntions(unittest.TestCase):
 
   def setUp(self):
+    # command line option dictionary
+    self.default_options={'offline':None, 'debug':None, 'error':None, 'exit':None}
+    self.offline_options={'offline':True, 'debug':None, 'error':None, 'exit':None}     
+    
+    # offline data   
+    self.offline_data = load_data('chapterone', self.offline_options)
+    
+    # offline book dictionary
+    self.books = parse_data(self.offline_data, self.offline_options)
+    
     # this function runs once before the individual tests are run
     self.expected_length = 47067
     self.expected_book_count = 59
-   
+    
+# parse_options tests    
+  def test_no_parse_options(self):
+    result = parse_options()
+    err_msg = "Parse Options result [%s] does not equal expected result [%s]" % (result, self.default_options)
+    self.assertEqual(result, self.default_options, err_msg)
+  def test_dx_parse_option(self):
+    # Test offline and debug command line options 
+    defined_options = {'debug':True, 'offline':True}
+    expected_result = dict(self.default_options.items() + defined_options.items())
+    result = parse_options(['-dx'])
+    err_msg = "Parse Options result [%s] does not equal expected result [%s]" % (result, expected_result)
+    self.assertEqual(result, expected_result, err_msg)
+  def test_help_parse_option(self):
+    # Test -h system exit command line options
+    defined_options = {'exit':True}
+    expected_result = dict(self.default_options.items() + defined_options.items()) 
+    result = parse_options(['-h'])
+    err_msg = "Parse Options result [%s] does not equal expected result [%s]" % (result, expected_result)
+    self.assertEqual(result, expected_result, err_msg)    
+  def test_invalid_parse_option(self):
+    defined_options = {'exit':True, 'error':getopt.GetoptError('option -z not recognized', 'z')}
+    expected_result = dict(self.default_options.items() + defined_options.items()) 
+    result = parse_options(['-z'])      
+    self.assertIsNone(result['debug'], "debug option is not None")    
+    self.assertIsNone(result['offline'], "offline option is not None") 
+    self.assertTrue(result['exit'], "exit options is not True")
+    self.assertIsInstance(result['error'], getopt.GetoptError, 'Error not instance of getopt.GetoptError.')    
+    self.assertEqual(result['error'].msg, 'option -z not recognized', 'Error msg not equal [%s]' % result['error'].msg) 
+    
+# load_data tests 
   def test_load_data_offline(self):
-    offline_data =  load_data(True)
-    offline_length = len(offline_data)
+    offline_length = len(self.offline_data)
     err_msg = "Offline data length [%s] does not equal expected length [%s]" % (offline_length, self.expected_length)
     self.assertEqual(offline_length, self.expected_length, err_msg)
-
   def test_load_data_online(self):
-    online_data =  load_data(False)
+    online_data =  load_data('chapterone', self.default_options)
     online_length = len(online_data)
     err_msg = "Online data length [%s] does not equal expected length [%s]" % (online_length, self.expected_length)
     self.assertEqual(online_length, self.expected_length, err_msg)
+  def test_load_data_pattern(self):
+    err_msg = "Pattern not contained in offline data."
+    pattern = r'Chapter One \(washingtonpost.com\)'
+    self.assertRegexpMatches(self.offline_data, pattern, err_msg)    
 
-  def test_parse_data(self):
-
-    # Test offline data length
-    offline_data =  load_data(True)
-    books = parse_data(offline_data)
-    book_count = len(books)
+# parse_data tests 
+  def test_parse_data_book_count(self):
+    book_count = len(self.books)
     err_msg = "Offline book count [%s] does not equal expected book count [%s]" % (book_count, self.expected_book_count)
     self.assertEqual(book_count, self.expected_book_count, err_msg)
+  def test_load_data_key_exists_key(self):
+    err_msg = "Key 'star' not found in book dictionary."
+    self.assertIn('star', self.books, err_msg)
+  def test_load_data_key_exists_title(self):
+    err_msg = "Key 'camus' not found in book dictionary."
+    self.assertIn('camus', self.books, err_msg) 
+  def test_load_data_key_doesnotexist_badkey(self):
+    err_msg = "Key 'badkey' found in book dictionary."
+    self.assertNotIn('badkey', self.books, err_msg)
+  def test_load_data_itemkey_exists_title(self):
+    chap = self.books['star']
+    err_msg = "Key 'title' not found in item dictionary."
+    self.assertIn('title', chap, err_msg)  
+  def test_load_data_itemkey_exists_key(self):
+    chap = self.books['star']
+    err_msg = "Key 'key' not found in item dictionary."
+    self.assertIn('key', chap, err_msg)  
+  def test_load_data_itemkey_doesnotexist_badkey(self):
+    chap = self.books['star']
+    err_msg = "Key 'badkey' found in item dictionary."
+    self.assertNotIn('badkey', self.books, err_msg) 
 
 if __name__ == '__main__':
     unittest.main()
@@ -66,7 +128,6 @@ assertLessEqual(a, b)   a <= b
 assertRegexpMatches(s, re)  regex.search(s) 
 assertNotRegexpMatches(s, re)   not regex.search(s) 
 assertItemsEqual(a, b)  sorted(a) == sorted(b) and works with unhashable objs 
-assertDictContainsSubset(a, b)  all the key/value pairs in a exist in b
 
 Method  Used to compare
 assertMultiLineEqual(a, b)  strings 
