@@ -42,10 +42,8 @@ def load_data(key, options):
   global books_url, chap1_url
   item_filename = "../../data/chap_data/%s.htm" % key  
   if options['offline']:
-    if options['debug']: print "Offline"
     text = open(item_filename, 'rU').read()
   else:
-    if options['debug']: print "Online"
     try:
       if (key=='chapterone'): base_url=books_url
       else: base_url=chap1_url
@@ -56,7 +54,7 @@ def load_data(key, options):
       print "No online connection, getting loading offline file."
       text = open(item_filename, 'rU').read()
     
-  if options['debug']: print "data length ['%s'] = [%d]\n" % (key, len(text))
+  #if options['debug']: print "data length ['%s'] = [%d]\n" % (key, len(text))
   return text 
 
 def parse_data(data, options):
@@ -86,22 +84,25 @@ def parse_data(data, options):
     item['author']=match.group(5).strip()
     item['review']=review_url + match.group(7).strip() + match.group(8).strip()
     books[match.group(2)]=item
-    
-  # Debug output 
-  if options['debug']:       
-    # output all items in book dictionary
-    for k,v in sorted(books.items()):
-      print "--> %s\n    %s\n" % (k, v) 
 
-    # output sample of book items
-    count = 0
-    for k,v in sorted(books.items()):
-      if (count>54): print "book['%s']" % (k)
-      item = v
-      for a in item:
-	 if (count>54): print "   book['%s']['%s']: '%s'" % (k, a, item[a])
-      count += 1    
   return books
+  
+def parse_chapter(key, data, books, options):
+    
+  """load chapter data into book dictionary"""
+
+  # Extract key and title from html source
+  pattern = r'plsfield:credit-->'
+  pattern += '([^\.]+)\.\s*'	# group 1: Publisher
+  pattern += '([\d]+)[^$]+'	# group 2: pages
+  pattern += '\$([^<]+)<'	# group 3: cost  
+  
+  for match in re.finditer(pattern, data):
+    books[key]['publisher']=match.group(1).strip()
+    books[key]['pages']=match.group(2).strip()
+    books[key]['cost']=match.group(3).strip()
+    
+  return books  
  
 
 def main():
@@ -121,9 +122,26 @@ def main():
   books = parse_data(data, options)
   
   # Load and parse each chapter one item
-  for k,v in sorted(books.items()): 
-    item_data = load_data(k, options)
-    break 
+  for k,v in sorted(books.items()):   
+    item_data = load_data(k, options)   
+    books = parse_chapter(k, item_data, books, options)
+
+  # Debug output 
+  if options['debug']: 
+    """      
+    output all items in book dictionary
+    for k,v in sorted(books.items()):
+      print "--> %s\n    %s\n" % (k, v) 
+    """    
+    # output sample of book items
+    count = 0
+    for k,v in sorted(books.items()):
+      print ""      
+      #if (count<54): print "book['%s']" % (k)
+      item = v
+      for a in item:
+	 if (count<54): print "book['%s']['%s']: '%s'" % (k, a, item[a])
+      count += 1 
    
   
   print "\nThere are %s books in the Washington Post Chapter One website\n" % (len(books))
