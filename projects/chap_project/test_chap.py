@@ -10,8 +10,8 @@ class TestChapFuntions(unittest.TestCase):
 
   def setUp(self):
     # command line option dictionary
-    self.default_options={'offline':None, 'debug':None, 'error':None, 'exit':None}
-    self.offline_options={'offline':True, 'debug':None, 'error':None, 'exit':None}     
+    self.default_options={'offline':None, 'debug':None, 'freq':None, 'error':None, 'exit':None}
+    self.offline_options={'offline':True, 'debug':None, 'freq':None, 'error':None, 'exit':None}     
     
     # offline data   
     self.offline_data = load_data('chapterone', self.offline_options)
@@ -94,8 +94,11 @@ class TestChapFuntions(unittest.TestCase):
     err_msg = "Key 'badkey' found in item dictionary."
     self.assertNotIn('badkey', self.books, err_msg) 
 
-if __name__ == '__main__':
-    unittest.main()
+#if __name__ == '__main__':
+#    unittest.main()
+
+suite = unittest.TestLoader().loadTestsFromTestCase(TestChapFuntions)
+unittest.TextTestRunner(verbosity=2).run(suite)
 
 '''
 http://docs.python.org/library/unittest.html

@@ -9,20 +9,22 @@ from string import punctuation
 books_url = 'http://www.washingtonpost.com/wp-srv/style/books/'
 chap1_url = 'http://www.washingtonpost.com/wp-srv/style/longterm/books/chap1/'
 review_url = 'http://www.washingtonpost.com/wp-dyn/content/article/'
-stopWordsList = ['']
-chaptext = {}
-reviewtext = {}
+stopWordsList = ['']  # List of words to ignore when calc word frequency.    
+chaptext = {}         # Dictionary of chapter one text.
+reviewtext = {}       # Dictionary of chapter one's review text.
+errors = {}           # Count of errors
 
 def usage():
-  print "Usage: chap.py [-h --help] [-x --offline] [-d --debug]\n"
+  print "Usage: chap.py [-h --help] [-x --offline] [-d --debug]  [-q --frequency]\n"
 
 def parse_options(argv=None):
   """parse command line options"""
   options={}
-  for key in ['offline', 'debug', 'error' , 'exit']: options[key] = None
+  # Initialize the options parameter list values
+  for key in ['offline', 'debug', 'freq', 'error' , 'exit']: options[key] = None
   
   try:
-    opts, args = getopt.getopt(argv, "hxd", ["help", "offline", "debug"])
+    opts, args = getopt.getopt(argv, "hxdq", ["help", "offline", "debug", "freq"])
   except getopt.GetoptError, err:
     options['exit']=True
     options['error']=err
@@ -35,31 +37,39 @@ def parse_options(argv=None):
       options['offline'] = True
     elif o in ("-d", "--debug"):
       options['debug'] = True
+    elif o in ("-q", "--frequency"):
+      options['freq'] = True      
     else:
       assert False, "unhandled option"
 
   return options
 
-def load_data(key, options, review=None):
+def load_data(key, options, review_url=None):
   """load html page data"""
   
   global books_url, chap1_url
-  if review is None: item_filename = "../../data/chap_data/%s.htm" % key
-  else: item_filename = "../../data/chap_data/%s_review.htm" % key
+
   if options['offline']:
+    # If review_url is set for offline, append "_review" to the filename
+    if review_url is None: item_filename = "../../data/chap_data/%s.htm" % key
+    else: item_filename = "../../data/chap_data/%s_review.htm" % key   
     text = open(item_filename, 'rU').read()
-  else:
+  else: # Access online data via urls
     try:
-      if (key=='chapterone'): base_url=books_url
-      else: base_url=chap1_url
-      page_url = "%s%s.htm" % (base_url, key)
+      if review_url: page_url = review_url
+      else:
+        if (key=='chapterone'): base_url=books_url
+        else: base_url=chap1_url
+        page_url = "%s%s.htm" % (base_url, key)
+      # open the page (url or local file)
       req = urllib2.urlopen(page_url)
+      # read the page into a string
       text = req.read()
     except Exception, err: # timed out internet connection, get offline file.
       print "No online connection, getting loading offline file."
       text = open(item_filename, 'rU').read()
-    
-  #if options['debug']: print "data length ['%s'] = [%d]\n" % (key, len(text))
+      
+    print "Page Length  [%s] = [%d]  review[%s]" % (key, len(text), review_url)
   return text
 
 def parse_data(data, options):
@@ -121,8 +131,7 @@ def parse_review(data, options):
    
   """parse review data for reviewtext dictionary"""
 
-  # Extract publisher, pages, cost and text from chapter one html source
-  #pattern = r'.*<div id="body_after_content_column">(.*)<br clear="all">'
+  # Extract text of review, do not include: tags or special chars
   pattern = r'<div id="body_after_content_column">([\W\S]*)<br clear="all">'
   review_text = ''
   for match in re.finditer(pattern, data):
@@ -130,14 +139,13 @@ def parse_review(data, options):
     review_text = remove_html_tags(match.group(1).strip())
     review_text = remove_html_chars(review_text)      
     review_text = remove_extra_spaces(review_text)  
-    
 
   return review_text  
  
 
 def main():
   
-  global chaptext, reviewtext
+  global chaptext, reviewtext, errors
   """Text mine the Washington Post Chapter One Data"""
   # Parse command line options
   options = parse_options(sys.argv[1:])
@@ -146,10 +154,8 @@ def main():
     if options['error']: print options['error']
     usage()
     sys.exit(2)
-    
-  # Load Stop Words
-  loadStopWordList(options)
-
+        
+  print "--------"
   # Load the chapter one data
   data = load_data('chapterone', options)
   
@@ -157,15 +163,19 @@ def main():
   books = parse_data(data, options)
     
   # Load and parse each chapter one item
+  errors=0;
   for k,v in sorted(books.items()):
+    print "--------"      
     item_data = load_data(k, options)
     books = parse_chapter(k, item_data, books, options)
-    
+    if k in chaptext: print "Chapter Text [%s] = [%d]" % (k, len(chaptext[k]))
+    else: 
+      print "Chapter Text [%s] NOT FOUND" % (k)
+      errors += 1 
     # Load Review and Parse text into reviewtext dictionary
     review_data = load_data(k, options, books[k]['review'])  
-    print "Review [%s] = [%d]\n" % (k, len(review_data))  
     reviewtext[k] = parse_review(review_data, options)
-    print "Review Text [%s] = [%d]\n" % (k, len(reviewtext[k]))  
+    print "Review Text  [%s] = [%d] => parse => [%d]" % (k, len(review_data), len(reviewtext[k])) 
 
   # Debug output
   if options['debug']:
@@ -177,21 +187,26 @@ def main():
     # output sample of book items
     count = 0
     for k,v in sorted(books.items()):
-      if (count<54): print "\nbook['%s']" % (k)      
-      #print "\nbook['%s']" % (k)
+      #if (count<54): print "\nbook['%s']" % (k)      
+      print "\nbook['%s']" % (k)
       item = v
       for a in item:
-        if (count<54): print "book['%s']['%s']: '%s'" % (k, a, item[a])	
-        #print "book['%s']['%s']: '%s'" % (k, a, item[a])
+        #if (count<54): print "book['%s']['%s']: '%s'" % (k, a, item[a])	
+        print "book['%s']['%s']: '%s'" % (k, a, item[a])
         count += 1
 
-  # output word frequency in chaptext dictionary
-  count = 0
-  for key in sorted(chaptext):
-    find_frequent_words(books[key]['title'], chaptext[key])
-    find_frequent_words("REVIEW of " + books[key]['title'], reviewtext[key]) 
+  if options['freq']:
+    # Load Stop Words
+    loadStopWordList(options)      
+    # output word frequency in chaptext dictionary
+    count = 0
+    for key in sorted(chaptext):
+      find_frequent_words(books[key]['title'], chaptext[key])
+      find_frequent_words("REVIEW of " + books[key]['title'], reviewtext[key]) 
   
-  print "\nThere are %s books in the Washington Post Chapter One website\n" % (len(books))
+  print "\nSummary:"
+  print "  There are %s books in the Washington Post Chapter One website" % (len(books))  
+  print "  Error: Found %d of %d chapters that failed to read in the chapter one text." % (errors, len(books))
   
 def remove_html_tags(data):
     p = re.compile(r'<.*?>')
@@ -226,7 +241,7 @@ def find_frequent_words(title, data):
     # start with an empty list
     wordList2 = []
     for word1 in wordList1:
-      word1 = filter(lambda c: c not in "\"\'.?,;", word1)      
+      word1 = filter(lambda c: c not in "\".?,;", word1)      
       # build a wordList of lower case modified words
       wordList2.append(word1.lower())
      
