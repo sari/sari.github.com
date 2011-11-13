@@ -19,7 +19,7 @@ def config_logging(level):
     ch = logging.StreamHandler(sys.stderr)
     ch.setLevel(level)
     # use custom simple formatter
-    ch.setFormatter(SimpleFormatter())
+    #ch.setFormatter(SimpleFormatter())
     logger.addHandler(ch)
     # don't propagate to root logger
     logger.propagate = False
@@ -167,6 +167,10 @@ def find_frequent_words(title, data, stopWordsList):
     # start with an empty list
     wordList2 = []
     for word1 in wordList1:
+	    # filter lambda example:
+		#   mult3 = filter(lambda x: x % 3 == 0, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+		#   sets mult3 to [3, 6, 9], those elements of the original list that are multiples of 3
+		# below: set word1 to chars in word1 where char is not in char list specified
         word1 = filter(lambda c: c not in "\".?,;", word1)            
         # build a wordList of lower case modified words
         wordList2.append(word1.lower())
@@ -175,6 +179,9 @@ def find_frequent_words(title, data, stopWordsList):
     # start with an empty dictionary
     freqDict = {}
     for word2 in wordList2:
+	    # get method syntax dict.get(key, default=None)
+	    # return a value for the given key. 
+	    # If key is not available then return returns default value.
         freqDict[word2] = freqDict.get(word2, 0) + 1
 
     logger.info("Word list length = [%d] before removal of stop words." % len(freqDict))
@@ -205,23 +212,9 @@ def remove_extra_spaces(data):
 def sort_items(x, y):
     '''Sort by value first, and by key (reverted) second.'''
     return cmp(x[1], y[1]) or cmp(y[0], x[0])        
-
-class SimpleFormatter(logging.Formatter):
-    # simple log formatter - generally only displays the log message,
-    # but for single-line messages with a log level greater than
-    # logging.INFO, pre-pends the level name to the beginning of the
-    # message.
-    def __init__(self, fmt='%(message)s', datefmt=None):
-        logging.Formatter.__init__(self, fmt=fmt, datefmt=datefmt)
-
-    def format(self, record):
-        text = logging.Formatter.format(self, record)
-        if record.levelno > logging.INFO and '\n' not in text:
-            text = '%s: %s' % (record.__dict__['levelname'], text)
-        return text
 	
 if __name__ == "__main__":
-
+	
     '''Load command line arguments'''
     parser = argparse.ArgumentParser(epilog="Example: chap.py -x -q -v Debug")
     parser.add_argument('-q', '--freq', default=None, help='Find word frequence in chapter and review text.', action='store_true')  
@@ -230,6 +223,7 @@ if __name__ == "__main__":
                         choices=['WARN', 'INFO', 'DEBUG'], default='WARN',
                         help='Log level for additional output.')
     args = parser.parse_args()
+    print "ARGS:%s" % args
 
     logger.info("ARGS offline[%s] loglevel[%s] freq[%s]" % (args.offline, args.loglevel, args.freq))
 
@@ -242,10 +236,16 @@ if __name__ == "__main__":
     
     # Parse the chapter one data list
     books = parse_data(chap_one_data, args)
-        
+    print "Loading %d books." % len(books)
+    count = 0
     # Load and parse each chapter one item
     errors=0;
     for k,v in sorted(books.items()):
+        if args.loglevel == 'WARN':   # Add a progress indicator
+            count+=1
+            sys.stdout.write('.')
+            sys.stdout.flush()
+            if count % 5 == 0: print " %d of %d" % (count, len(books))
         logger.info("--------")           
         item_data = load_data(k, args)
         books = parse_chapter(k, item_data, books, args.offline)
