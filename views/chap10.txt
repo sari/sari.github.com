@@ -1,4 +1,14 @@
 #!/opt/local/bin/python2.7
+'''
+This script read in a list of Washington Post Review books,
+load the chapter one and the chapter one review text,
+and then runs a word frequency on the text.
+Usage: python chap27.py [-x] [-q] [-vDEBUG]
+where
+-x --offline: Use offline data (do not connect to internet).
+-v --loglevel[INFO|WARN|DEBUG]: Set the logging level
+-1 --freq: Calculate the word frequence on the chapter and review.
+'''
 
 import argparse
 import logging
@@ -18,8 +28,6 @@ def config_logging(level):
     # customize log output slightly
     ch = logging.StreamHandler(sys.stderr)
     ch.setLevel(level)
-    # use custom simple formatter
-    #ch.setFormatter(SimpleFormatter())
     logger.addHandler(ch)
     # don't propagate to root logger
     logger.propagate = False
