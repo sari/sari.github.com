@@ -6,7 +6,7 @@ and then runs a word frequency on the text.
 Usage: python chap27.py [-x] [-q] [-vDEBUG]
 where
 -x --offline: Use offline data (do not connect to internet).
--v --loglevel[INFO|WARN|DEBUG]: Set the logging level
+-v --loglevel[DEBUG|INFO|WARN]: Set the logging level (default WARN)
 -1 --freq: Calculate the word frequence on the chapter and review.
 '''
 
@@ -244,7 +244,7 @@ if __name__ == "__main__":
     
     # Parse the chapter one data list
     books = parse_data(chap_one_data, args)
-    print "Loading %d books." % len(books)
+    print "\nBegin loading %d books." % len(books)
     count = 0
     # Load and parse each chapter one item
     errors=0;
@@ -266,6 +266,7 @@ if __name__ == "__main__":
         reviewtext[k] = parse_review(review_data, args)
         logger.info("Review Text  [%s] = [%d]" % (k, len(reviewtext[k])))
 
+    logger.warn('\nCompleted data load and text extraction.\n')
     # Debug output
     #output all items in book dictionary
     #for k,v in sorted(books.items()):
