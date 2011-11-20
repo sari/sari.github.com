@@ -1,10 +1,10 @@
 #!c:/Python27   /bin;/usr/bin/python
 
 import argparse
+import getopt
 import unittest
-import getopt 
-from chap27 import load_data
-from chap27 import parse_data
+import xmlrunner
+from chap27 import *
 
 class ArgParseMock(object):
   def __init__(self, offline, loglevel, freq):
@@ -68,14 +68,77 @@ class TestChapFuntions(unittest.TestCase):
   def test_load_data_itemkey_doesnotexist_badkey(self):
     chap = self.books['star']
     err_msg = "Key 'badkey' found in item dictionary."
-    self.assertNotIn('badkey', self.books, err_msg) 
+    self.assertNotIn('badkey', self.books, err_msg)
+    
+  def test_loadStopWords(self):
+    stopWords=loadStopWords()
+    expected_length=664
+    self.assertEqual(len(stopWords), expected_length)    
 
-#if __name__ == '__main__':
-#    unittest.main()
+  def test_parse_chapter(self):
+    books={'key':{'title':'Test'}}
+    data='<!--plsfield:credit-->Three Rivers. 338 pp. Paperback, $15<br>blah<!--plsfield:description-->Review goes here.<i>(Continues...)'
+    expected_result={'key':{'publisher':'Three Rivers', 'pages':'338', 'cost':'15', 'title':'Test'}}
+    result=parse_chapter('key', data, books)
+    self.assertEqual(result, expected_result)
+
+    books={'key':{'title':'Test'}}
+    data='<!--plsfield:credit-->Simon & Schuster. 640 pp., $30<br>blah<!--plsfield:description-->Review goes here.<i>(Continues...)'
+    expected_result={'key':{'publisher':'Simon & Schuster', 'pages':'640', 'cost':'30', 'title':'Test'}}
+    result=parse_chapter('key', data, books)
+    self.assertEqual(result, expected_result)
+
+    books={'key':{'title':'Test'}}
+    data='<!--plsfield:credit-->Free Press. 258 pp. $26<br>blah<!--plsfield:description-->Review goes here.<i>(Continues...)'
+    expected_result={'key':{'publisher':'Free Press', 'pages':'258', 'cost':'26', 'title':'Test'}}   
+    result=parse_chapter('key', data, books)
+    self.assertEqual(result, expected_result)
+    
+  def test_parse_review(self):
+    data='<div id="body_after_content_column">Review goes here.<br clear="all">'
+    expected_result="Review goes here."
+    result=parse_review(data)
+    self.assertEqual(result, expected_result)      
+    
+  def test_find_frequent_words(self):
+    stopwords=["the", "and", "over"]
+    data="the quick brown fox jumps over the lazy brown dog and over brown lazy moon."
+    result=find_frequent_words("Test", data, stopwords)
+    self.assertNotIn('the', result.keys())
+    self.assertNotIn('and', result.keys())
+    self.assertNotIn('over', result.keys())    
+    self.assertEqual(result['brown'], 3)
+    self.assertEqual(result['lazy'], 2)    
+    self.assertEqual(result['quick'], 1)
+    self.assertEqual(result['fox'], 1)
+    self.assertEqual(result['jumps'], 1)
+    self.assertEqual(result['dog'], 1)                            
+    self.assertEqual(result['moon'], 1)
+    
+  def test_remove_html_tags(self):
+    s="This is a <bold>statement</bold>"
+    expected_result="This is a statement"
+    result=remove_html_tags(s)
+    self.assertEqual(result, expected_result)  
+
+  def test_remove_html_chars(self):
+    s="&quot;Single Quote&#34; Double Quote"
+    expected_result="Single Quote Double Quote"
+    result=remove_html_chars(s)
+    self.assertEqual(result, expected_result)           
+
+  def test_remove_extra_spaces(self):
+    s="This is a    sentence      with      many   spaces."
+    expected_result="This is a sentence with many spaces."
+    result=remove_extra_spaces(s)
+    self.assertEqual(result, expected_result)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestChapFuntions)
 unittest.TextTestRunner(verbosity=2).run(suite)
 
+#if __name__ == '__main__':
+#    unittest.main(testRunner=xmlrunner.XMLTestRunner(output='/usr/share/tomcat7/.jenkins/jobs/python_class/workspace/test-reports'))
+    
 '''
 http://docs.python.org/library/unittest.html
 
