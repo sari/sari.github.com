@@ -1,0 +1,1024 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Emory Libraries Python Group</title>
+   <meta name="author" content="Emory Libraries Python Group" />
+   <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
+   <style type="text/css">
+/* Remove margins from the 'html' and 'body' tags, and ensure the page takes up full screen height */
+html, body {height:100%; margin:0; padding:0; font-family: Helvetica; font-size: 10pt;}
+/* Set the position and dimensions of the background image. */
+#page-background {position:fixed; top:0; left:0; width:100%; height:100%;}
+/* Specify the position and layering for the content that needs to appear in front of the background image. Must have a higher z-index value than the background image. Also add some padding to compensate for removing the margin from the 'html' and 'body' tags. */
+#content {position:relative; z-index:1; padding:10px;}
+</style>
+<!-- The above code doesn't work in Internet Explorer 6. To address this, we use a conditional comment to specify an alternative style sheet for IE 6 -->
+<!--[if IE 6]>
+<style type="text/css">
+html {overflow-y:hidden;}
+body {overflow-y:auto;}
+#page-background {position:absolute; z-index:-1;}
+#content {position:static;padding:10px;}
+</style>
+<![endif]-->
+</head>
+<body>
+<div id="page-background"><img src="../images/paper.jpg" width="100%" height="100%" alt="paper"></div>
+<div id="content">
+<a name="top"><h3>SAMPLE SPARQL Queries</h3></a>
+<a target="_blank" href="sparql.html">SPARQL home</a>
+<p/>
+<a href="#gl">Georgia Lynching Queries</a>&nbsp;&nbsp;&nbsp;<a href="#empdept">EMP DEPT Queries</a>
+
+
+<h4><a name="empdept">EMP DEPT REPOSITORY SPARQL QUERIES</a></h4>
+# 01 List all employees
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_01'</th></tr>
+<tr><td><pre>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?emp where {
+?emp  rdf:type  f:emp.
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 02 List the names of all employees in alphabetical order
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_02'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?name where {
+?emp  rdf:type  f:emp.
+?emp  foaf:surname ?name. 
+}
+ORDER BY ?name
+</pre></td></tr>
+</table> 
+<p/>
+
+# 03 List the employees' name, salary, department number and job<br>
+# Note that ; in place of . repeats the subject.
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_03'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?name ?sal ?dno ?job where {
+?emp  rdf:type  f:emp;
+    foaf:surname ?name;
+    f:Sal ?sal;
+    f:Dept ?dept;
+    f:Job ?job.  
+?dept f:DeptNo ?dno. 
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# FAILS<br>
+# 04 List the first 5 employees
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_04'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?ename where {
+?emp  rdf:type  f:emp;
+    foaf:surname ?ename.
+} 
+ORDER BY ?ename
+LIMIT 5
+</pre></td></tr>
+</table> 
+<p/>
+
+# 04a List the first 5 employees
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_04a'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?ename where {
+?emp  rdf:type  f:emp;
+    foaf:surname ?ename.
+} 
+ORDER BY ?ename
+</pre></td></tr>
+</table> 
+<p/>
+
+# 04b List the first 5 employees
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_04b'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?ename where {
+?emp  rdf:type  f:emp;
+    foaf:surname ?ename.
+} 
+LIMIT 5
+</pre></td></tr>
+</table> 
+<p/>
+
+# 05 List the top 5 employees by salary
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_05'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?ename ?sal where {
+?emp  rdf:type  f:emp;
+   foaf:surname ?ename;
+   f:Sal ?sal.
+} 
+ORDER BY DESC(?sal)
+LIMIT 5
+</pre></td></tr>
+</table> 
+<p/>
+
+# 06 List the departments
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_06'</th></tr>
+<tr><td><pre>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?dept where {
+?dept  rdf:type  f:dept.  
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 07 List all departments and all employees
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_07'</th></tr>
+<tr><td><pre>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?dept ?emp where {
+{?dept  rdf:type  f:dept }
+UNION
+{?emp rdf:type f:emp}
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 08 List the employees with salaries over 1000
+# If the RDF literal is typed, for example as xs:integer as is the case with this generated RDF, <br>
+# then the following query will select employees with a salary greater than 1000
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_08'</th></tr>
+<tr><td><pre>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?emp ?sal where {
+?emp  rdf:type  f:emp;
+    f:Sal ?sal.
+FILTER (?sal > 1000)
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 09 List the employees with salaries over 1000<br>
+# If the RDF literal is not typed, then the variable must be cast
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_09'</th></tr>
+<tr><td><pre>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+prefix xs: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+select ?emp ?sal where {
+?emp  rdf:type  f:emp;
+    f:Sal ?sal.
+FILTER (xs:integer(?sal) > 1000)
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 10 List employees and their locations
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_10'</th></tr>
+<tr><td><pre>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?emp ?loc where {
+?emp  rdf:type  f:emp.
+?emp f:Dept ?dept.
+?dept f:Location ?loc.
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 11 List the names of employees and their managers
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_11'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?ename ?mname where {
+?emp  rdf:type  f:emp;
+    f:Mgr ?mgr;
+    foaf:surname ?ename.
+?mgr foaf:surname ?mname.
+} 
+</pre></td></tr>
+</table> 
+<p/>
+
+# 12 List the names of employees and their managers<br>
+# Include employees with no manager
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_12'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?ename ?mname where {
+?emp  rdf:type  f:emp;
+    foaf:surname ?ename.
+OPTIONAL {?emp f:Mgr ?mgr.
+        ?mgr foaf:surname ?mname.
+       }
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 13 List employees with no manager<br>
+# Result: ename = "KING"
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_13'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?ename where {
+?emp  rdf:type  f:emp;
+    foaf:surname ?ename.
+OPTIONAL {?emp f:Mgr ?mgr}
+FILTER (!bound(?mgr))
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 14 List the distinct locations of staff<br>
+# Result: loc<br>
+# <file://dbpedia.org/resource/New_York><br>
+# <file://dbpedia.org/resource/Dallas><br>
+# <file://dbpedia.org/resource/Chicago><br>
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_14'</th></tr>
+<tr><td><pre>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select distinct ?loc  where {
+?emp  rdf:type  f:emp.
+?emp  f:Dept ?dept.
+?dept f:Location ?loc.
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 15 List details of the employees who are ANALYSTs
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_15'</th></tr>
+<tr><td><pre>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select * where {
+?emp  rdf:type  f:emp.
+?emp  f:Dept ?dept.
+?dept f:Location ?loc.
+?emp f:Job ?job.
+FILTER (?job = "ANALYST")
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 16 List employees who are either ANALYSTs or MANAGERs
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_16'</th></tr>
+<tr><td><pre>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?emp where {
+?emp  rdf:type  f:emp;
+    f:Job ?job.
+FILTER (?job = "ANALYST"  || ?job = "MANAGER")
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 17 List employees who are neither ANALYSTs nor MANAGERs
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_17'</th></tr>
+<tr><td><pre>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select * where {
+?emp  rdf:type  f:emp;
+     f:Job ?job.
+FILTER (?job != "ANALYST"  && ?job != "MANAGER")
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 18  List employees whose surname begins with "S"<br>
+# Result: emp                                   ename<br>
+# &lt;http://www.cems.uwe.ac.uk/empdept/emp/7369>  "SMITH"<br>
+# &lt;http://www.cems.uwe.ac.uk/empdept/emp/7788>  "SCOTT"
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_18'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select * where {
+?emp  rdf:type  f:emp.
+?emp foaf:surname ?ename.
+FILTER (regex(?ename, "^S"))
+} 
+</pre></td></tr>
+</table> 
+<p/>
+
+# 19 List employees whose surname contains "AR"<br>
+# Result: emp                                   ename<br>
+# &lt;http://www.cems.uwe.ac.uk/empdept/emp/7521>  "WARD"<br>
+# &lt;http://www.cems.uwe.ac.uk/empdept/emp/7782>  "CLARK"<br>
+# &lt;http://www.cems.uwe.ac.uk/empdept/emp/7654>  "MARTIN"
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_19'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select * where {
+?emp  rdf:type  f:emp.
+?emp foaf:surname ?ename.
+FILTER (regex(?ename, "AR"))
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 20 List employees whose surname contains M followed by R ignoring case<br>
+# Result:   emp                                 ename<br>
+# &lt;http://www.cems.uwe.ac.uk/empdept/emp/7934> "MILLER"<br>
+# &lt;http://www.cems.uwe.ac.uk/empdept/emp/7654> "MARTIN"
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_20'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select * where {
+?emp  rdf:type  f:emp.
+?emp foaf:surname ?ename.
+FILTER (regex(?ename, "m.*r","i"))
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 21  Compute the maximum salary (SPARQL 1.1)<br>
+# Result: MaxSal=5000
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_21'</th></tr>
+<tr><td><pre>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select (max(?sal) as ?maxsal) where {
+?maxemp  rdf:type  f:emp.
+?maxemp  f:Sal ?sal.
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 22 Compute employees with the same salary
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_22'</th></tr>
+<tr><td><pre>
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select * where {
+?emp1 f:Sal ?sal.
+?emp2 f:Sal ?sal.
+FILTER (?emp1 != ?emp2)
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 23 Get the department which SMITH works for
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_23'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?dname  where {
+?emp  rdf:type  f:emp.
+?emp f:Dept ?dept.
+?emp foaf:surname "SMITH".
+?dept f:Dname ?dname.
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 24 List the names of employees in Accounting
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_24'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?ename  where {
+?emp  rdf:type  f:emp.
+?emp f:Dept ?dept.
+?emp foaf:surname ?ename.
+?dept f:Dname "Accounting".
+} 
+</pre></td></tr>
+</table> 
+<p/>
+
+# 25 Employees hired in this millennium<br>
+# Note that the literal needs to be typed to make this comparison work.
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_25'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+prefix xs: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+select ?ename ?hire where {
+?emp  rdf:type  f:emp.
+?emp f:HireDate ?hire.
+?emp foaf:surname ?ename.
+FILTER (?hire > "2000-01-01"^^xs:date) 
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 26 List the names of employees whose manager is in a different department
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_26'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?name ?edname ?mdname {
+  ?emp  rdf:type  f:emp;
+        foaf:surname ?name;
+        f:Dept ?dept;
+        f:Mgr ?mgr.
+  
+   ?mgr f:Dept ?mdept. 
+   ?dept f:Dname ?edname.
+   ?mdept f:Dname ?mdname.
+   FILTER (?dept != ?mdept)
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 27 List the grades of employees<br>
+# In relational terms, this is a theta-join between the employee and the salgrade tables
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_27'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?ename ?grade where {
+?emp  rdf:type  f:emp;
+   foaf:surname ?ename;
+   f:Sal ?sal.
+?salgrade rdf:type f:salgrade; 
+   f:LoSal ?low; 
+   f:HiSal ?high;
+   f:Grade ?grade.
+
+FILTER (?sal >= ?low && ?sal <= ?high)
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 28 Abbreviated query syntax<br>
+# No prefix would be:<br>
+#select ?sal  where { &lt;http://www.cems.uwe.ac.uk/empdept/emp/7900> f:Sal ?sal. }
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_28'</th></tr>
+<tr><td><pre>
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+prefix e: &lt;http://www.cems.uwe.ac.uk/empdept/emp/>
+select ?sal  where {
+e:7900 f:Sal ?sal.
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 29 introduce a default namespace
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_29'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix : &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?name ?sal ?dno ?job where {
+?emp  rdf:type  :emp;
+   foaf:surname ?name;
+   :Sal ?sal;
+   :Dept ?dept;
+   :Job ?job.  
+?dept :DeptNo ?dno. 
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 30 use the abbreviation a for rdf:type
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_30'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix : &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?name ?sal ?dno ?job where {
+?emp  a :emp;
+   foaf:surname ?name;
+   :Sal ?sal;
+   :Dept ?dept;
+   :Job ?job.  
+?dept :DeptNo ?dno. 
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 31 if we don't need to return the resource itself, it can be anonymous
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_31'</th></tr>
+<tr><td><pre>
+prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
+prefix : &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?name ?sal ?dno ?job where {
+[ a :emp;
+foaf:surname ?name;
+:Sal ?sal;
+:Dept ?dept;
+:Job ?job
+].
+?dept :DeptNo ?dno. 
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+## Aggregation functions like count() and sum() and the GROUP BY clause are not defined in SPARQL 1.0<br>
+&nbsp;<br>
+# 32 Count the number of departments
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_32'</th></tr>
+<tr><td><pre>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select (count(?dept) as ?count) where {
+?dept  rdf:type  f:dept.
+}
+</pre></td></tr>
+</table> 
+<p/>
+# 33 Count the number of employees in each department
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_33'</th></tr>
+<tr><td><pre>
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select distinct ?dept (count(?emp) as ?count) where {
+?dept a f:dept.
+?emp f:Dept ?dept.
+} group by ?dept
+</pre></td></tr>
+</table> 
+<p/>
+
+## Generic queries<br>
+&nbsp;<br>
+
+# 34 List all data
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_34'</th></tr>
+<tr><td><pre>
+select * where {
+?s ?p ?o
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 35 List all data LIMIT 20
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_35'</th></tr>
+<tr><td><pre>
+select * where {
+?s ?p ?o
+} LIMIT 20
+
+</pre></td></tr>
+</table> 
+<p/>
+
+# 36 List all employee data
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_36'</th></tr>
+<tr><td><pre>
+prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?prop ?val where {
+?emp  rdf:type  f:emp.
+?emp ?prop ?val.
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 37 What types are there?<br>
+# Note: This shows that triples defining the emp vocabulary are in the same dataset.
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_37'</th></tr>
+<tr><td><pre>
+select distinct ?type where {
+?s a ?type
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 38 What properties are there?<br>
+# This query only finds ranges which are instances of a type in the dataset. <br>
+# Sal has a range of xs:integer but it is not easy to discover that with a SPARQL query.
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_38'</th></tr>
+<tr><td><pre>
+select distinct ?prop where {
+?s ?prop ?o
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 39 What is the domain(s) of a property?
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_39'</th></tr>
+<tr><td><pre>
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select distinct ?type where {
+?s f:Sal ?v.
+?s a ?type.
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 40 What are the ranges of a property (Sal)?
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_40'</th></tr>
+<tr><td><pre>
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select distinct ?type where {
+?s f:Sal ?o.
+?o a ?type.
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 41  What are the ranges of a property (Mgr)?
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_41'</th></tr>
+<tr><td><pre>
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select distinct ?type where {
+?s f:Mgr ?o.
+?o a ?type.
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 42 What properties have a given type as its domain ?
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_42'</th></tr>
+<tr><td><pre>
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select distinct ?prop where {
+ ?s a f:salgrade.
+ ?s ?prop [].
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+<h4>Schema queries</h4>
+
+# 43 What properties have a domain of a given type?<br>
+# Note that this has only returned the properties in the empdept vocab, <br>
+# not the foaf name property used in the raw data.
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_43'</th></tr>
+<tr><td><pre>
+prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?prop  where {
+?prop rdfs:domain f:emp.
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 44 What integer properties do employees have?
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_44'</th></tr>
+<tr><td><pre>
+prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+prefix xs: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+select ?prop  where {
+?prop rdfs:domain f:emp.
+?prop rdfs:range xs:integer.
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+# 45 What types of resources have salaries?
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_45'</th></tr>
+<tr><td><pre>
+prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select ?type where {
+f:Sal rdfs:domain ?type.
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+<h4>Queries on both the data and the vocab can be made</h4>
+
+# 46 What literal properties do MANAGERS have?
+<table width=600 border=1 bgcolor="tan">
+<tr><th>'emp_dept_46'</th></tr>
+<tr><td><pre>
+prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
+select DISTINCT ?prop  where {
+?x f:Job "MANAGER".
+?x a ?type. 
+?prop rdfs:domain ?type.
+?prop rdfs:range rdfs:literal.
+}
+</pre></td></tr>
+</table> 
+<p/>
+<hr/>
+<p/>
+<h4><a name="gl">Georgia Lynching Queries</a>&nbsp;<a href="#top">top</a></h4>
+
+<table width=600 border=1 bgcolor="burlywood">
+<tr><th>get_types</th></tr>
+<tr><td><pre>SELECT DISTINCT ?type WHERE { ?thing a ?type . } ORDER BY ?type'</pre></td></tr>
+</table> 
+<p/>
+<table width=600 border=1 bgcolor="burlywood">
+<tr><th>find_subtypes</th></tr>
+<tr><td><pre>
+PREFIX scx:&lt;http://galyn.example.com/source_data_files/setup_Complex.csv#&gt;
+PREFIX sxcxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Complex-Complex.csv#&gt;
+PREFIX sxsxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Simplex-Complex.csv#&gt;
+PREFIX ssx:&lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt; 
+select * where {
+  {
+    ?sxcxcx sxcxcx:HigherComplex scx:r1;
+            sxcxcx:Name ?name;
+            sxcxcx:LowerComplex ?lower.
+    ?lower scx:GrammarRule_Text ?rule.
+  } UNION {
+    ?sxsxcx sxsxcx:Complex scx:r1;
+            sxsxcx:Simplex ?ssx.
+    ?ssx ssx:Name ?name.
+  }
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+
+# This query works in the GUI, but not in the API
+<table width=600 border=1 bgcolor="burlywood">
+<tr><th>'find_events_order_time'</th></tr>
+<tr><td><pre>
+PREFIX dcx:&lt;http://galyn.example.com/source_data_files/data_Complex.csv#&gt;
+PREFIX scx:&lt;http://galyn.example.com/source_data_files/setup_Complex.csv#&gt;
+PREFIX ssx:&lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt;
+PREFIX sxcxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Complex-Complex.csv#&gt;
+SELECT ?macro ?melabel ?event ?evlabel (MIN(?evdate) as ?mindate)
+WHERE {
+  ?macro a scx:r1;                  
+         dcx:Identifier ?melabel;
+         sxcxcx:r61 ?event.         
+  ?event dcx:Identifier ?evlabel;
+         sxcxcx:r62 ?_1.            
+  ?_1 sxcxcx:r64 ?_2.               
+  {
+    ?_2 sxcxcx:r78 ?_3. 
+    ?_3 sxcxcx:r103 ?_4. 
+    ?_4 sxcxcx:r104 ?_5. 
+  } UNION {
+    ?_2 sxcxcx:r47 ?_6.    
+    ?_6 sxcxcx:r79 ?_7. 
+    ?_7 sxcxcx:r103 ?_8. 
+    ?_8 sxcxcx:r104 ?_5. 
+  } UNION {
+    ?_2 sxcxcx:r47 ?_6.    
+    ?_6 sxcxcx:r80 ?_9. 
+    ?_9 sxcxcx:52 ?_7.    
+    ?_7 sxcxcx:r103 ?_8. 
+    ?_8 sxcxcx:r104 ?_5. 
+  } UNION {
+    ?_2 sxcxcx:r47 ?_6.    
+    ?_6 sxcxcx:r80 ?_9. 
+    ?_9 sxcxcx:r53 ?_10. 
+    ?_10 sxcxcx:r60 ?_5. 
+  }
+
+  ?_5 sxcxcx:r20 ?_11.  
+
+  {
+    ?_11 sxcxcx:r97 ?_12.     
+    ?_12 ssx:r66 ?evdate      
+  } UNION {
+    ?_11 sxcxcx:r22 ?_13.     
+    ?_13 sxcxcx:r4 ?_14.      
+    ?_14 ssx:r66 ?evdate      
+  } UNION {
+    ?_11 sxcxcx:r22 ?_13.     
+    ?_13 sxcxcx:r4 ?_14.      
+    ?_14 ssx:r68 ?evdate 
+  }
+}
+GROUP BY ?macro ?melabel ?event ?evlabel
+ORDER BY ?mindate
+</pre></td></tr>
+</table> 
+<p/>
+<table width=600 border=1 bgcolor="burlywood">
+<tr><th>'find_event_order_location'</th></tr>
+<tr><td><pre>
+PREFIX dcx:&lt;http://galyn.example.com/source_data_files/data_Complex.csv#&gt;
+PREFIX scx:&lt;http://galyn.example.com/source_data_files/setup_Complex.csv#&gt;
+PREFIX ssx:&lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt;
+PREFIX sxcxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Complex-Complex.csv#&gt;
+SELECT DISTINCT ?state ?county ?city ?event ?evlabel ?macro ?melabel
+WHERE {
+  ?macro a scx:r1;      
+         dcx:Identifier ?melabel;
+         sxcxcx:r61 ?event. 
+  ?event dcx:Identifier ?evlabel;
+         sxcxcx:r62 ?_1.   
+  ?_1 sxcxcx:r64 ?_2.    
+
+  {
+    ?_2 sxcxcx:r78 ?_3.  
+    ?_3 sxcxcx:r103 ?_4.  
+    ?_4 sxcxcx:r106 ?_5. 
+  } UNION {
+    ?_2 sxcxcx:r47 ?_6. 
+    ?_6 sxcxcx:r79 ?_3. 
+    ?_3 sxcxcx:r103 ?_4. 
+    ?_4 sxcxcx:r106 ?_5. 
+  } UNION {
+    ?_2 sxcxcx:r47 ?_6.      
+    ?_6 sxcxcx:r80 ?_7.     
+    ?_7 sxcxcx:52 ?_3.      
+    ?_3 sxcxcx:r103 ?_4.    
+    ?_4 sxcxcx:r106 ?_5.     
+  } UNION {
+    ?_2 sxcxcx:r47 ?_6.      
+    ?_6 sxcxcx:r80 ?_7.     
+    ?_7 sxcxcx:r53 ?_8.      
+    ?_8 sxcxcx:r59 ?_5.      
+  }
+  {
+    ?_5 sxcxcx:r2 ?_9.               
+    ?_9 sxcxcx:r41 ?_10.              
+  } UNION {
+    ?_5 sxcxcx:r3 ?_10.               
+  }
+  
+  OPTIONAL {
+    ?_10 ssx:r18 ?county.             
+    FILTER (?county != "?")
+  }
+  OPTIONAL {
+    ?_10 ssx:r30 ?state.              
+    FILTER (?state != "?")
+  }
+  OPTIONAL {
+    ?_10 ssx:r55 ?city.              
+    FILTER (?city != "?")
+  }
+  
+  FILTER (BOUND(?state) || BOUND(?county) || BOUND(?city))
+}
+ORDER BY UCASE(?state) UCASE(?county) UCASE(?city) ?event ?evlabel 
+</pre></td></tr>
+</table> 
+<p/>
+<table width=600 border=1 bgcolor="burlywood">
+<tr><th>'find_articles_for_event'</th></tr>
+<tr><td><pre>
+PREFIX dcx:&lt;http://galyn.example.com/source_data_files/data_Complex.csv#&gt;
+PREFIX dxcxd:&lt;http://galyn.example.com/source_data_files/data_xref_Complex-Document.csv#&gt;
+PREFIX scx:&lt;http://galyn.example.com/source_data_files/setup_Complex.csv#&gt;
+PREFIX ssx:&lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt;
+PREFIX sxcxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Complex-Complex.csv#&gt;
+SELECT ?macro ?melabel ?event ?evlabel ?dd ?docpath 
+WHERE {
+  ?macro a scx:r1;                  
+         dcx:Identifier ?melabel;
+         sxcxcx:r61 ?event.         
+  ?event dcx:Identifier ?evlabel.
+  ?dxcxd dxcxd:Complex ?event;
+         dxcxd:Document ?dd.
+  ?dd ssx:r85 ?docpath.   
+} 
+ORDER BY ?macro ?event ?docpath
+</pre></td></tr>
+</table> 
+<p/>
+<table width=600 border=1 bgcolor="burlywood">
+<tr><th>'find_events_for_specific_person'</th></tr>
+<tr><td><pre>
+PREFIX dcx:&lt;http://galyn.example.com/source_data_files/data_Complex.csv#&gt;
+PREFIX sxcxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Complex-Complex.csv#&gt;
+SELECT ?triplet ?role ?trlabel ?event ?evlabel ?macro ?melabel 
+WHERE {
+  dcx:r4569 ^sxcxcx:r31 ?actor. 
+  {
+    ?actor ^sxcxcx:r30 ?participant. 
+    ?triplet sxcxcx:r63 ?participant. 
+    BIND("subject" as ?role)
+  } UNION {
+    ?actor ^sxcxcx:r35 ?participant.  
+    ?triplet sxcxcx:r65 ?participant.  
+    BIND("object" as ?role)
+  } 
+
+  ?triplet dcx:Identifier ?trlabel.
+  ?event sxcxcx:r62 ?triplet;       
+         dcx:Identifier ?evlabel.
+  ?macro sxcxcx:r61 ?event;          
+         dcx:Identifier ?melabel.      
+}
+</pre></td></tr>
+</table> 
+<p/>
+
+
+
+
+</div>
+</body>
+</html>
+

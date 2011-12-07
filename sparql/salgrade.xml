@@ -1,0 +1,27 @@
+<SalTable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <SalGrade>
+        <Grade>1</Grade>
+        <LoSal>700</LoSal>
+        <HiSal>1200</HiSal>
+    </SalGrade>
+    <SalGrade>
+        <Grade>2</Grade>
+        <LoSal>1201</LoSal>
+        <HiSal>1400</HiSal>
+    </SalGrade>
+    <SalGrade>
+        <Grade>4</Grade>
+        <LoSal>2001</LoSal>
+        <HiSal>3000</HiSal>
+    </SalGrade>
+    <SalGrade>
+        <Grade>5</Grade>
+        <LoSal>3001</LoSal>
+        <HiSal>99999</HiSal>
+    </SalGrade>
+    <SalGrade>
+        <Grade>3</Grade>
+        <LoSal>1401</LoSal>
+        <HiSal>2000</HiSal>
+    </SalGrade>
+</SalTable>

@@ -1,0 +1,22 @@
+<DeptTable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Dept>
+        <DeptNo>10</DeptNo>
+        <Dname>Accounting</Dname>
+        <Location>New York</Location>
+    </Dept>
+    <Dept>
+        <DeptNo>20</DeptNo>
+        <Dname>Research</Dname>
+        <Location>Dallas</Location>
+    </Dept>
+    <Dept>
+        <DeptNo>30</DeptNo>
+        <Dname>Sales</Dname>
+        <Location>Chicago</Location>
+    </Dept>
+    <Dept>
+        <DeptNo>40</DeptNo>
+        <Dname>Operations</Dname>
+        <Location>Boston</Location>
+    </Dept>
+</DeptTable>
