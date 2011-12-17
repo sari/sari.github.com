@@ -84,7 +84,6 @@ select ?name ?sal ?dno ?job where {
 </table> 
 <p/>
 
-# FAILS<br>
 # 04 List the first 5 employees
 <table width=600 border=1 bgcolor="tan">
 <tr><th>'emp_dept_04'</th></tr>
@@ -97,38 +96,6 @@ select ?ename where {
     foaf:surname ?ename.
 } 
 ORDER BY ?ename
-LIMIT 5
-</pre></td></tr>
-</table> 
-<p/>
-
-# 04a List the first 5 employees
-<table width=600 border=1 bgcolor="tan">
-<tr><th>'emp_dept_04a'</th></tr>
-<tr><td><pre>
-prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
-prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
-prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
-select ?ename where {
-?emp  rdf:type  f:emp;
-    foaf:surname ?ename.
-} 
-ORDER BY ?ename
-</pre></td></tr>
-</table> 
-<p/>
-
-# 04b List the first 5 employees
-<table width=600 border=1 bgcolor="tan">
-<tr><th>'emp_dept_04b'</th></tr>
-<tr><td><pre>
-prefix foaf: &lt;http://xmlns.com/foaf/0.1/>
-prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
-prefix f: &lt;http://www.cems.uwe.ac.uk/empdept/concept/>
-select ?ename where {
-?emp  rdf:type  f:emp;
-    foaf:surname ?ename.
-} 
 LIMIT 5
 </pre></td></tr>
 </table> 
