@@ -940,17 +940,22 @@ PREFIX dxcxd:&lt;http://galyn.example.com/source_data_files/data_xref_Complex-Do
 PREFIX scx:&lt;http://galyn.example.com/source_data_files/setup_Complex.csv#&gt;
 PREFIX ssx:&lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt;
 PREFIX sxcxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Complex-Complex.csv#&gt;
-SELECT ?macro ?melabel ?event ?evlabel ?dd ?docpath 
+
+SELECT DISTINCT ?melabel ?event ?evlabel ?dd ?docpath ?paperdate ?papername ?articlepage
 WHERE {
-  ?macro a scx:r1;                  
+  ?macro a scx:r1;                   
          dcx:Identifier ?melabel;
          sxcxcx:r61 ?event.         
   ?event dcx:Identifier ?evlabel.
+
   ?dxcxd dxcxd:Complex ?event;
          dxcxd:Document ?dd.
-  ?dd ssx:r85 ?docpath.   
-} 
-ORDER BY ?macro ?event ?docpath
+  optional { ?dd ssx:r68 ?paperdate }
+  optional { ?dd ssx:r69 ?papername }
+  optional { ?dd ssx:r73 ?articlepage }
+  optional { ?dd ssx:r85 ?docpath }              
+}
+ORDER BY ?event ?docpath
 </pre></td></tr>
 </table> 
 <p/>
@@ -981,10 +986,36 @@ WHERE {
 </pre></td></tr>
 </table> 
 <p/>
+<table width=600 border=1 bgcolor="burlywood">
+<tr><th>'find_article_metadata_properties'</th></tr>
+<tr><td><pre>
+prefix dd: &lt;http://galyn.example.com/source_data_files/data_Document.csv#&gt;
+prefix ssx: &lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt;
+select distinct ?ssx ?name where {
+?dd a dd:Row;
+    ?ssx ?val.
+?ssx a ssx:Row;
+     ssx:Name ?name.
+}
+</pre></td></tr>
+</table>
+<p/>
+<table width=600 border=1 bgcolor="burlywood">
+<tr><th>'find_article_metadata'</th></tr>
+<tr><td><pre>
+prefix dd: &lt;http://galyn.example.com/source_data_files/data_Document.csv#&gt;
+prefix ssx: &lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt;
 
-
-
-
+select ?id ?paperdate ?papername ?articlepage ?path where {
+?dd a dd:Row;
+    dd:ID ?id.
+optional { ?dd ssx:r68 ?paperdate }
+optional { ?dd ssx:r69 ?papername }
+optional { ?dd ssx:r73 ?articlepage }
+optional { ?dd ssx:r85 ?path }
+} 
+</pre></td></tr>
+</table> 
 </div>
 </body>
 </html>
