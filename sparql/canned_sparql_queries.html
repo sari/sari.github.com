@@ -819,7 +819,7 @@ PREFIX dcx:&lt;http://galyn.example.com/source_data_files/data_Complex.csv#&gt;
 PREFIX scx:&lt;http://galyn.example.com/source_data_files/setup_Complex.csv#&gt;
 PREFIX ssx:&lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt;
 PREFIX sxcxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Complex-Complex.csv#&gt;
-SELECT ?macro ?melabel ?event ?evlabel (MIN(?evdate) as ?mindate)
+SELECT ?macro ?melabel ?event ?evlabel (MIN(?evdate) as ?mindate) (MAX(?evdate) as ?maxdate)
 WHERE {
   ?macro a scx:r1;                  
          dcx:Identifier ?melabel;
