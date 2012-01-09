@@ -74,6 +74,51 @@ p
 </table> 
 <p/>
 
+
+
+
+
+
+# <a href="http://wiki.foaf-project.org/z/index.php?title=UsingFoafKnows&oldid=370">FOAF Knows Example</a>
+<table width=600 border=1 bgcolor="tan">
+<tr><th>foaf.rdf</th></tr>
+<tr><td><pre>
+&lt;rdf:RDF
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:admin="http://webns.net/mvcb/"&gt;
+&lt;foaf:PersonalProfileDocument rdf:about=""&gt;
+  &lt;foaf:maker rdf:resource="#me"/&gt;
+  &lt;foaf:primaryTopic rdf:resource="#me"/&gt;
+  &lt;admin:generatorAgent rdf:resource="http://www.ldodds.com/foaf/foaf-a-matic"/&gt;
+  &lt;admin:errorReportsTo rdf:resource="mailto:leigh@ldodds.com"/&gt;
+&lt;/foaf:PersonalProfileDocument&gt;
+&lt;foaf:Person rdf:ID="me"&gt;
+&lt;foaf:name&gt;Sari Connard&lt;/foaf:name&gt;
+&lt;foaf:title&gt;Ms&lt;/foaf:title&gt;
+&lt;foaf:givenname&gt;Sari&lt;/foaf:givenname&gt;
+&lt;foaf:family_name&gt;Connard&lt;/foaf:family_name&gt;
+&lt;foaf:nick&gt;Sari&lt;/foaf:nick&gt;
+&lt;foaf:mbox_sha1sum&gt;7eabb36d58ccf7099456129bf063905998976c25&lt;/foaf:mbox_sha1sum&gt;
+&lt;foaf:homepage rdf:resource="sconna2.github.com"/&gt;
+&lt;foaf:phone rdf:resource="tel:404-727-0964"/&gt;
+&lt;foaf:workplaceHomepage rdf:resource="http://web.library.emory.edu/"/&gt;
+&lt;foaf:knows&gt;
+    &lt;foaf:Person&gt;
+        &lt;foaf:name&gt;Alice Hickcox&lt;/foaf:name&gt;
+        &lt;foaf:mbox_sha1sum&gt;8f6e62cca9f73fe22814988832db3ec207e99fb7&lt;/foaf:mbox_sha1sum&gt;
+        &lt;rdfs:seeAlso rdf:resource="http://alicehickcox.github.com/foaf.rdf"/&gt;
+    &lt;/foaf:Person&gt;
+&lt;/foaf:knows&gt;&lt;/foaf:Person&gt;
+&lt;/rdf:RDF&gt;
+</pre></td></tr>
+</table> 
+<p/>
+
+
+
+
 </div>
 </body>
 </html>
