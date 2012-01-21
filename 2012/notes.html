@@ -37,6 +37,8 @@ body {overflow-y:auto;}
 
 <a name="git"><strong>Git Commands</strong></a>
 <table>
+<tr><td>&nbsp;ssh -T git@github.com&nbsp;</td><td>&nbsp;Test ssh key. Reply "yes" to continue connecting.</td></tr>
+
 <tr><td>&nbsp;git init&nbsp;</td><td>&nbsp;create a repository from an existing directory of files&nbsp;</td></tr>
 <tr><td>&nbsp;git status -s&nbsp;</td><td>&nbsp;Get the current status of your local repository&nbsp;</td></tr>
 <tr><td>&nbsp;git add&nbsp;</td><td>&nbsp;start tracking new files and also to stage changes to already tracked files&nbsp;</td></tr>
@@ -44,19 +46,38 @@ body {overflow-y:auto;}
 <tr><td>&nbsp;git push origin master&nbsp;</td><td>&nbsp;update a remote repository with the changes you've made locally&nbsp;</td></tr>
 <tr><td>&nbsp;git clone git@github.com:<i>username</i>/<i>username</i>.github.com.git&nbsp;</td><td>&nbsp;Pull a copy of a git repository to your local computer&nbsp;</td></tr>
 <tr><td>&nbsp;git pull&nbsp;</td><td>&nbsp;Pull the latest changes of a git repository to your local computer&nbsp;</td></tr>
+
+
+
+
 </table>
 <br/>&nbsp;<br/>
 
 <a name="unix"><strong>UNIX Commands</strong></a>
 <table>
-<tr><td>&nbsp;ls -al&nbsp;</td><td>&nbsp;list file in directory (a)all (l)long&nbsp;</td></tr>
-<tr><td>&nbsp;mkdir <i>abc</i>&nbsp;</td><td>&nbsp;make a directory call <i>abc</i>&nbsp;</td></tr>
-<tr><td>&nbsp;rm -r <i>abc</i>&nbsp;</td><td>&nbsp;remove a directory (recursively).  Use (f)forcefully for skipping questions.&nbsp;</td></tr>
-<tr><td>&nbsp;pwd&nbsp;</td><td>&nbsp;print current directory&nbsp;</td></tr>
+<tr><td>&nbsp;alias&nbsp;</td><td>&nbsp;list alias settings in ~/.bashrc&nbsp;</td></tr>
 <tr><td>&nbsp;cd ~&nbsp;</td><td>&nbsp;change directory to your default (home) location&nbsp;</td></tr>
 <tr><td>&nbsp;cd ..&nbsp;</td><td>&nbsp;change directory to one level up&nbsp;</td></tr>
 <tr><td>&nbsp;cd ../..&nbsp;</td><td>&nbsp;change directory to two levels up&nbsp;</td></tr>
+<tr><td>&nbsp;env&nbsp;</td><td>&nbsp;List environment variables&nbsp;</td></tr>
+<tr><td>&nbsp;echo $PATH&nbsp;</td><td>&nbsp;List environment variable PATH setting&nbsp;</td></tr>
+<tr><td>&nbsp;echo $SHELL&nbsp;</td><td>&nbsp;List current shell&nbsp;</td></tr>
+<tr><td>&nbsp;edit ~/.profile&nbsp;</td><td>&nbsp;Edit profile to update PATH setting. <br/>&nbsp;
+Close/reopen terminal, or type "source ~/.profile" to reload profile&nbsp;</td></tr>
+<tr><td>&nbsp;ls -al&nbsp;</td><td>&nbsp;list file in directory (a)all (l)long&nbsp;</td></tr>
+<tr><td>&nbsp;mkdir <i>abc</i>&nbsp;</td><td>&nbsp;make a directory call <i>abc</i>&nbsp;</td></tr>
+<tr><td>&nbsp;pwd&nbsp;</td><td>&nbsp;print current directory&nbsp;</td></tr>
+<tr><td>&nbsp;rm -r <i>abc</i>&nbsp;</td><td>&nbsp;remove a directory (recursively).  Use (f)forcefully for skipping questions.&nbsp;</td></tr>
+<tr><td>&nbsp;sudo find / -name git&nbsp;</td><td>&nbsp;Locate all files/dir named git&nbsp;</td></tr>
 <tr><td>&nbsp;touch <i>filename</i>&nbsp;</td><td>&nbsp;create an empty file called <i>filename</i>&nbsp;</td></tr>
+<tr><td>&nbsp;whereis git&nbsp;</td><td>&nbsp;Locate where git is installed&nbsp;</td></tr>
+<tr><td>&nbsp;which python&nbsp;</td><td>&nbsp;Locate current python environment&nbsp;</td></tr>
+</table>
+
+<a name="unix"><strong>Sample ~/.bashrc</strong></a>
+<table>
+<tr><td>&nbsp;
+&nbsp;</td></tr>
 </table>
 
 <br/>&nbsp;<br/>
