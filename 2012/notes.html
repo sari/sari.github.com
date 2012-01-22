@@ -44,7 +44,7 @@ table, td {border:1px solid black; border-collapse: collapse;}
 Close/reopen terminal, or type "source ~/.profile" to reload profile&nbsp;</td></tr>
 <tr><td>&nbsp;ls -al&nbsp;</td><td>&nbsp;list file in directory (a)all (l)long&nbsp;</td></tr>
 <tr><td>&nbsp;mkdir <i>abc</i>&nbsp;</td><td>&nbsp;make a directory call <i>abc</i>&nbsp;</td></tr>
-<tr><td>&nbsp;pip list&nbsp;</td><td>&nbsp;List pip installed packages&nbsp;</td></tr>
+<tr><td>&nbsp;pip freeze&nbsp;</td><td>&nbsp;List pip installed packages&nbsp;</td></tr>
 <tr><td>&nbsp;pwd&nbsp;</td><td>&nbsp;print current directory&nbsp;</td></tr>
 <tr><td>&nbsp;rm -r <i>abc</i>&nbsp;</td><td>&nbsp;remove a directory (recursively).  Use (f)forcefully for skipping questions.&nbsp;</td></tr>
 <tr><td>&nbsp;sudo find / -name git&nbsp;</td><td>&nbsp;Locate all files/dir named git&nbsp;</td></tr>
@@ -60,7 +60,9 @@ Close/reopen terminal, or type "source ~/.profile" to reload profile&nbsp;</td><
 <tr><td>&nbsp;~/.profile&nbsp;</td><td>&nbsp;# Configure prompt
 <br/>&nbsp;export PS1="[\@]\w $ "
 <br/>&nbsp;export EDITOR=mate
-<br/>&nbsp;export PATH=/usr/local/bin:/usr/local/share/python:$PATH&nbsp;</td></tr>
+<br/>&nbsp;export PATH=/usr/local/bin:/usr/local/share/python:$PATH
+<br/>&nbsp;source /usr/local/share/python/virtualenvwrapper.sh
+<br/>&nbsp;source ~/.bashrc</td></tr>
 <tr><td>&nbsp;~/.bashrc&nbsp;</td><td>&nbsp;# Aliases
 <br/>&nbsp;alias va='. ~/.virtualenvs/dev/bin/activate'
 <br/>&nbsp;alias vd="deactivate"&nbsp;</td></tr>
