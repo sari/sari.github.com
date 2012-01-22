@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Emory Libraries Python Group</title>
+   <meta name="author" content="Emory Libraries Python Group" />
+   <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
+   <style type="text/css">
+html, body {font-family: Helvetica; font-size: 10pt;}
+table, td {border:1px solid black; border-collapse: collapse;}
+</style>
+</head>
+<body bgcolor="azure">
+
+<h3>Emory University Libraries Python Group</h3>
+<a target="_blank" href="2012.html">home</a>
+<h4>Next Up</h4>
+<ul>
+  <li>Optionally create an Apple Developer Account: 
+	 <a target="_blank" href="http://developer.apple.com/programs/start/university/create.php">iOS Developer University Program Enrollment</a><br/>&nbsp;</li>
+  <li>Install: <a target="_blank" href="http://developer.apple.com/support/xcode/">Apple's Xcode Developer Tools</a> (free from App Store) &nbsp; &nbsp;(<a href='http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/'>reference</a>)<br/>&nbsp;</li>
+  <li>Install: <a href="https://connect.apple.com" rel="nofollow">Java Developer Update</a> (free from App Store) &nbsp; &nbsp;(<a href='http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/'>reference</a>)<br/>&nbsp;</li>
+
+  <li>Install <a href='https://github.com/mxcl/homebrew/wiki/installation'>Homebrew</a> package manager &nbsp; &nbsp;(<a href='http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/'>reference</a>)<br/>&nbsp;
+	  <ul>
+		<li>If you have macports installed and want to move to homebrew see <a href='http://bitboxer.de/2010/06/03/moving-from-macports-to-homebrew/'>moving-from-macports-to-homebrew</a>
+        <li><pre>/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"</pre></li>
+        <li><pre>brew install wget</pre></li>
+        <li><pre>see <a target="_blank" href="notes.html#config">Config Notes</a> for setting up PATH</pre></li>
+        <li>Verify installation: <strong>brew help</strong><br/>&nbsp;</li>
+        
+      </ul>
+  </li>
+
+  <li>Install <a href='https://github.com/mxcl/homebrew/wiki/installation'>Python 2.7.2</a> &nbsp; &nbsp;(<a href='http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/'>reference</a>)
+	  <ul>
+        <li><pre>brew install readline sqlite gdbm pkg-config</pre></li>
+        <li><pre>brew install python --framework --universal</pre></li>
+        <li><pre>see <a target="_blank" href="notes.html#config">Config Notes</a> for setting up PATH</pre></li>
+		<li><pre>cd /System/Library/Frameworks/Python.framework/Versions
+sudo rm Current
+ln -s /usr/local/Cellar/python/2.7.2/Frameworks/Python.framework/Versions/Current</pre></li>
+		<li><pre>mkdir ~/Frameworks
+ln -s "/usr/local/Cellar/python/2.7.2/Frameworks/Python.framework" ~/Frameworks</pre></li>
+        <li>Verify installation: <strong>python --version</strong><br/>&nbsp;</li>
+        <li><pre>easy_install pip</pre></li>
+        <li>Verify installation: <strong>pip help</strong><br/>&nbsp;</li>
+      </ul>
+  </li>
+
+  <li>Install virtualenv &nbsp; &nbsp;(<a href='http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/'>reference</a>)
+	  <ul>
+        <li><pre>sudo pip install virtualenv</pre></li>
+		<li><pre>sudo pip install virtualenvwrapper</pre></li>
+        <li><pre>source /usr/local/share/python/virtualenvwrapper.sh</pre></li>
+		<li><pre>mkvirtualenv dev</pre></li>
+        <li><pre>see <a target="_blank" href="notes.html#config">Config Notes</a> for setting up aliases</pre></li>
+      </ul>
+  </li>
+</ul>
+
+</body>
+</html>

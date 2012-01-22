@@ -8,54 +8,32 @@
    <meta name="author" content="Emory Libraries Python Group" />
    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
    <style type="text/css">
-/* Remove margins from the 'html' and 'body' tags, and ensure the page takes up full screen height */
-html, body {height:100%; margin:0; padding:0; font-family: Helvetica; font-size: 10pt;}
-/* Set the position and dimensions of the background image. */
-#page-background {position:fixed; top:0; left:0; width:100%; height:100%;}
-/* Specify the position and layering for the content that needs to appear in front of the background image. Must have a higher z-index value than the background image. Also add some padding to compensate for removing the margin from the 'html' and 'body' tags. */
-#content {position:relative; z-index:1; padding:10px;}
+html, body {font-family: Helvetica; font-size: 10pt;}
 table, td {border:1px solid black; border-collapse: collapse;}
 </style>
-<!-- The above code doesn't work in Internet Explorer 6. To address this, we use a conditional comment to specify an alternative style sheet for IE 6 -->
-<!--[if IE 6]>
-<style type="text/css">
-html {overflow-y:hidden;}
-body {overflow-y:auto;}
-#page-background {position:absolute; z-index:-1;}
-#content {position:static;padding:10px;}
-</style>
-<![endif]-->
 </head>
-<body>
-<div id="page-background"><img src="../images/paper.jpg" width="100%" height="100%" alt="paper"></div>
-<div id="content">
+<body bgcolor="lightyellow">
 
 <a name="top"><h3>Emory University Libraries Python Group Notes</h3></a>
-<!--    
-<a href="#git">Git Commands</a>&nbsp;&nbsp;&nbsp;<a href="#unix">UNIX Commands</a>
--->
-
-<a name="git"><strong>Git Commands</strong></a>
+<a target="_blank" href="2012.html">home</a>&nbsp;&nbsp;&nbsp;
+<a href="#git">Git</a>&nbsp;&nbsp;&nbsp;<a href="#unix">UNIX</a>&nbsp;&nbsp;&nbsp;<a href="#config">Config</a>
+<br/>&nbsp;<br/>
+<a name="git"><strong>Git</strong></a>
 <table>
-<tr><td>&nbsp;ssh -T git@github.com&nbsp;</td><td>&nbsp;Test ssh key. Reply "yes" to continue connecting.</td></tr>
-
-<tr><td>&nbsp;git init&nbsp;</td><td>&nbsp;create a repository from an existing directory of files&nbsp;</td></tr>
-<tr><td>&nbsp;git status -s&nbsp;</td><td>&nbsp;Get the current status of your local repository&nbsp;</td></tr>
 <tr><td>&nbsp;git add&nbsp;</td><td>&nbsp;start tracking new files and also to stage changes to already tracked files&nbsp;</td></tr>
-<tr><td>&nbsp;git commit -m <i>message</i>&nbsp;</td><td>&nbsp;record your snapshot into your history&nbsp;</td></tr>
-<tr><td>&nbsp;git push origin master&nbsp;</td><td>&nbsp;update a remote repository with the changes you've made locally&nbsp;</td></tr>
 <tr><td>&nbsp;git clone git@github.com:<i>username</i>/<i>username</i>.github.com.git&nbsp;</td><td>&nbsp;Pull a copy of a git repository to your local computer&nbsp;</td></tr>
+<tr><td>&nbsp;git commit -m <i>message</i>&nbsp;</td><td>&nbsp;record your snapshot into your history&nbsp;</td></tr>
+<tr><td>&nbsp;git init&nbsp;</td><td>&nbsp;create a repository from an existing directory of files&nbsp;</td></tr>
 <tr><td>&nbsp;git pull&nbsp;</td><td>&nbsp;Pull the latest changes of a git repository to your local computer&nbsp;</td></tr>
-
-
-
-
+<tr><td>&nbsp;git push origin master&nbsp;</td><td>&nbsp;update a remote repository with the changes you've made locally&nbsp;</td></tr>
+<tr><td>&nbsp;git status -s&nbsp;</td><td>&nbsp;Get the current status of your local repository&nbsp;</td></tr>
+<tr><td>&nbsp;ssh -T git@github.com&nbsp;</td><td>&nbsp;Test ssh key. Reply "yes" to continue connecting.</td></tr>
 </table>
 <br/>&nbsp;<br/>
-
-<a name="unix"><strong>UNIX Commands</strong></a>
+<a name="unix"><strong>UNIX</strong></a>
 <table>
 <tr><td>&nbsp;alias&nbsp;</td><td>&nbsp;list alias settings in ~/.bashrc&nbsp;</td></tr>
+<tr><td>&nbsp;brew list&nbsp;</td><td>&nbsp;List brew installed applications&nbsp;</td></tr>
 <tr><td>&nbsp;cd ~&nbsp;</td><td>&nbsp;change directory to your default (home) location&nbsp;</td></tr>
 <tr><td>&nbsp;cd ..&nbsp;</td><td>&nbsp;change directory to one level up&nbsp;</td></tr>
 <tr><td>&nbsp;cd ../..&nbsp;</td><td>&nbsp;change directory to two levels up&nbsp;</td></tr>
@@ -66,18 +44,26 @@ body {overflow-y:auto;}
 Close/reopen terminal, or type "source ~/.profile" to reload profile&nbsp;</td></tr>
 <tr><td>&nbsp;ls -al&nbsp;</td><td>&nbsp;list file in directory (a)all (l)long&nbsp;</td></tr>
 <tr><td>&nbsp;mkdir <i>abc</i>&nbsp;</td><td>&nbsp;make a directory call <i>abc</i>&nbsp;</td></tr>
+<tr><td>&nbsp;pip list&nbsp;</td><td>&nbsp;List pip installed packages&nbsp;</td></tr>
 <tr><td>&nbsp;pwd&nbsp;</td><td>&nbsp;print current directory&nbsp;</td></tr>
 <tr><td>&nbsp;rm -r <i>abc</i>&nbsp;</td><td>&nbsp;remove a directory (recursively).  Use (f)forcefully for skipping questions.&nbsp;</td></tr>
 <tr><td>&nbsp;sudo find / -name git&nbsp;</td><td>&nbsp;Locate all files/dir named git&nbsp;</td></tr>
 <tr><td>&nbsp;touch <i>filename</i>&nbsp;</td><td>&nbsp;create an empty file called <i>filename</i>&nbsp;</td></tr>
 <tr><td>&nbsp;whereis git&nbsp;</td><td>&nbsp;Locate where git is installed&nbsp;</td></tr>
 <tr><td>&nbsp;which python&nbsp;</td><td>&nbsp;Locate current python environment&nbsp;</td></tr>
+<tr><td>&nbsp;vad&nbsp;</td><td>&nbsp;(alias) activate virtual environment dev&nbsp;</td></tr>
+<tr><td>&nbsp;da&nbsp;</td><td>&nbsp;(alias) deactivate current virtual environment&nbsp;</td></tr>
 </table>
-
-<a name="unix"><strong>Sample ~/.bashrc</strong></a>
+<br/>&nbsp;<br/>
+<a name="config"><strong>Sample Configurations</strong></a>
 <table>
-<tr><td>&nbsp;
-&nbsp;</td></tr>
+<tr><td>&nbsp;~/.profile&nbsp;</td><td>&nbsp;# Configure prompt
+<br/>&nbsp;export PS1="[\@]\w $ "
+<br/>&nbsp;export EDITOR=mate
+<br/>&nbsp;export PATH=/usr/local/bin:/usr/local/share/python:$PATH&nbsp;</td></tr>
+<tr><td>&nbsp;~/.bashrc&nbsp;</td><td>&nbsp;# Aliases
+<br/>&nbsp;alias vad='. ~/.virtualenvs/dev/bin/activate'
+<br/>&nbsp;alias vd="deactivate"&nbsp;</td></tr>
 </table>
 
 <br/>&nbsp;<br/>
