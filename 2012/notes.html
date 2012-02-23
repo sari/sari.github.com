@@ -65,18 +65,26 @@ Close/reopen terminal, or type "source ~/.profile" to reload profile&nbsp;</td><
 <tr><td>&nbsp;vd&nbsp;</td><td>&nbsp;(alias) virtual environment deactivation &nbsp;</td></tr>
 </table>
 <br/>&nbsp;<br/>
-<a name="config"><strong>Sample Configurations</strong></a>
+<a name="config"><strong>Sample Configurations</strong></a><br />
+<a href="http://tools.proteomecenter.org/wiki/index.php?title=Bash/tcsh_syntax_differences">Bash/tcsh syntax differences</a>
 <table>
-<tr><td>&nbsp;~/.profile<br/>&nbsp;<br/>or<br/>&nbsp;<br/>&nbsp;~/.bash_profile&nbsp;</td><td>&nbsp;# Configure prompt
+<tr><td>&nbsp;BASH<br/>&nbsp;<br/>&nbsp;~/.bash_profile&nbsp;</td><td>&nbsp;# Configure prompt
 <br/>&nbsp;export PS1="[\@]\w $ "
-<br/>&nbsp;export EDITOR=mate
 <br/>&nbsp;export PATH=/usr/local/bin:/usr/local/share/python:$PATH
+<br/>&nbsp;source /usr/local/share/python/virtualenvwrapper.sh
+<br/>&nbsp;source ~/.bashrc</td></tr>
+<tr><td>&nbsp;TCSH<br/>&nbsp;<br/>&nbsp;~/.profile&nbsp;</td><td>&nbsp;# Configure prompt"
+<br/>&nbsp;setenv PATH=/usr/local/bin:/usr/local/share/python:$PATH
 <br/>&nbsp;source /usr/local/share/python/virtualenvwrapper.sh
 <br/>&nbsp;source ~/.bashrc</td></tr>
 <tr><td>&nbsp;~/.bashrc&nbsp;</td><td>&nbsp;# Aliases
 <br/>&nbsp;alias va='. ~/.virtualenvs/dev/bin/activate'
 <br/>&nbsp;alias vd="deactivate"&nbsp;</td></tr>
 </table>
+
+
+
+
 
 <br/>&nbsp;<br/>
 <a href="#top">top</a>
