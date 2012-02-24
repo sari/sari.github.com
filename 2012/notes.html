@@ -18,7 +18,44 @@ table, td {border:1px solid black; border-collapse: collapse;}
 <a target="_blank" href="2012.html">home</a>&nbsp;&nbsp;&nbsp;
 <a href="#git">Git</a>&nbsp;&nbsp;&nbsp;<a href="#unix">UNIX</a>&nbsp;&nbsp;&nbsp;<a href="#config">Config</a>
 <br/>&nbsp;<br/>
-<a name="git"><strong>Git</strong></a>
+<a name="git"><strong>Use Github to create hompage using your github username</strong></a>
+<br/><strong>For all the examples below replace "abc" with your github username.</strong>
+<table>
+<tr><td>&nbsp;Create an account on <a href='https://github.com/'>github</a>
+<br/>&nbsp;Click on the "New Repository" button.
+<br/>&nbsp;Create a new repository called abc.github.com&nbsp;
+<br/> </td><td>&nbsp;<a href="http://help.github.com/create-a-repo/">Create a new repository on github</a>.&nbsp;</td></tr>
+<tr><td>&nbsp;<a href='http://help.github.com/linux-set-up-git/'>Download and install GIT</a>
+<br/>&nbsp;Verify that git is installed.
+<br/>&nbsp;(in a terminal window, type)
+<br/>&nbsp;<strong>git help</strong>&nbsp;</td>
+<td>&nbsp;<a href='http://help.github.com/linux-set-up-git/'>Download and install GIT</a></td></tr>
+<tr><td>
+&nbsp;<strong>git config --global user.name "Sari Connard"</strong>&nbsp;<br/>
+&nbsp;<strong>git config --global user.email sconna2@emory.edu</strong>&nbsp;<br/>
+&nbsp;<strong>git config -l</strong>
+&nbsp;</td><td>&nbsp;Global setup&nbsp;</td></tr>
+<tr><td>&nbsp;<strong>mkdir abc.github.com
+<br/>&nbsp;cd abc.github.com
+<br/>&nbsp;git init
+<br/>&nbsp;touch README
+<br/>&nbsp;git add README
+<br/>&nbsp;git commit -m 'first commit'
+<br/>&nbsp;git remote add origin git@github.com:abc/abc.github.com.git&nbsp;
+<br/>&nbsp;git push -u origin master</strong>
+</td><td>&nbsp;Open a terminal window and create a local repo.&nbsp;</td></tr>
+<tr><td>&nbsp;Create an <a target="_blank" href="20120109.html">index.html and style.css</a>
+<br/>&nbsp;add a favicon using the 
+<a target="_blank" href="http://www.prodraw.net/favicon/index.php">free favicon generator</a>
+<br/>&nbsp;Using git, add/commit/push your new files to github repository.
+</td><td>&nbsp;Customize the homepage&nbsp;</td></tr>
+<tr><td>&nbsp;Open a browser to your homepage.&nbsp;<br/>
+&nbsp;abc.github.com
+</td><td>&nbsp;View your homepage&nbsp;</td></tr>
+
+</table>
+<br/>&nbsp;<br/>
+<a name="unix"><strong>Git Help</strong></a>
 <table>
 <tr><td>&nbsp;how do I update my github repository?&nbsp;</td><td>&nbsp;make changes to file(s); git add; git commit; git push.&nbsp;</td></tr>
 <tr><td>&nbsp;git add&nbsp;</td><td>&nbsp;start tracking new files and also to stage changes to already tracked files&nbsp;</td></tr>
