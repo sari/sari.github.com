@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex" />
+<title>Sari Connard</title>
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<style type="text/css">
+html {overflow-y:hidden;}
+body {overflow-y:auto;}
+#page-background {position:absolute; z-index:-1;}
+#content {position:static;padding:10px;}
+</style>
+<![endif]-->
+<link rel="stylesheet" href="../style-html5.css" />
+<link rel="first" href="../index.html">
+<link rel=icon href=favicon.png sizes="20x20" type="../images/favicon.ico">
+
+</head>
+<body>
+<div id="page-background"><img src="../images/paper.jpg" width="100%" height="100%" alt="paper"></div>
+<div id="content">
+  <header>
+    <hgroup><h1>&#167;&nbsp;2012 ~ The Year of Black Water Dragon&nbsp;&#167;</h1></hgroup>
+    <nav><ul><li><a target="_blank" href="../index.html">home</a></li></ul></nav>
+  </header>
+<h2>RDF-Triplestore-SPARQl Tutorial</h2>
+
+  <article>
+    <header>
+      <time datetime="2011-11-17" pubdate>December 17, 2011</time>
+      <h1>
+        <a href="sparql/sesame_tutorial.html" rel="bookmark" title="RDF-Triplestore-SPARQl Tutorial">Install Tomcat and Java</a>
+      </h1>
+    </header>
+    <ul>
+    <li>Install Tomcat</li>
+    <li>Install Java</li>
+    <li>vi /home/tomcat/tomcat/bin/setenv.sh<br/>
+    <pre>
+    JAVA_HOME=/usr/lib/jvm/java-6-sun<br/>
+    export CATALINA_OPTS="$CATALINA_OPTS -Xms128m -Xmx1024m -XX:MaxPermSize=256m"</pre></li>
+    <li>vi /home/tomcat/tomcat/conf/server.xml<br/>
+    <pre>
+    # change the port 8080 to 8180.
+    </pre></li>
+    <li>Setup tomcat start/stop scripts as needed (sudo vi /etc/init.d/tomcat)</li>
+    <li>Increase memory in bin/catalina.sh accordingly: 
+    <pre>
+    JAVA_OPTS="-Xmx512M -Xms512M"</pre></li>
+    </ul>
+  </article>
+    <article>
+    <header>
+      <time datetime="2011-11-17" pubdate>December 17, 2011</time>
+      <h1>
+        <a href="sparql/sesame_tutorial.html" rel="bookmark" title="RDF-Triplestore-SPARQl Tutorial">Sesame (RDF Triplestore) Installation</a>
+      </h1>
+    </header>
+    <ul>
+    <li>Download openrdf-sesame-2.6.3-sdk.tar.gz or  get the latest version
+    <pre>sudo su - tomcat<br/>
+    tar -xzvf openrdf-sesame-2.6.3-sdk.tar.gz<br/>
+    cp openrdf-sesame-2.6.3/war/*.war /home/tomcat/tomcat/webapps/.<br/>
+    # sudo cp openrdf-sesame-2.6.3/war/*.war /var/lib/tomcat7/webapps/.<br/>
+    mkdir -p .aduna<br/>
+    chmod 755 .aduna</pre>
+    </li>
+    <li>Restart Tomcat, delete previous expanded war if upgrading</li>
+    <li><a target="_blank" href="http://localhost:8180/openrdf-workbench/repositories/NONE/repositories">Your localhost Sesame Triplestore Repositories</a></li>
+    <li><a target="_blank" href="http://localhost:8180/openrdf-sesame/system/overview.view">Your localhost Sesame Triplestore System Information</a></li>
+    <li>Data Load
+    <ul>
+    <li>Open the workbench and create a new repository. Use the following settings:
+    <pre>
+    Type: Native Java Store RDF Schema<br/>
+    Download the data file with right-click save-as on this link <a href="emp_dept.rdf" title="EMP RDF">emp_dept_rdf.txt</a> <a href="emp_dept.rdf" title="EMP RDF">emp_dept_rdf2.txt</a><br/>
+    In the workbench left menu, click on "Modify" -> "Add":<br/>
+    Click on "Browse", and find the emp_dept.rdf file you just downloaded, and then "Upload" button </pre></li>
+    <li>Load RDF data into the new emp_dept repository
+    <pre>
+    Type: Native Java Store RDF Schema<br/>
+    ID: emp_dept<br/>
+    Emp Dept Test Repository </pre></li>
+    </ul>
+    </li>
+    <li>Sesame GUI SPARQL Queries<ul>
+    <li>Open <a target="_blank" href="canned_sparql_queries.html" title="SPARQL Queries">canned sparql queries</a>.</li>
+    <li>In the workbench left menu, click on "Explore" -> "Query"</li>
+    <li>Replace all the PREFIX text in the query text box with one of the SPARQL queries</li>
+    </ul></li>
+    </ul>
+  </article>
+
+  <footer>
+    <p>&#167;<br/>&copy; 2012 <a href="../index.html">Sari Connard (html5)</a></p>
+  </footer>
+  </div> <!-- end background image -->  
+</body>
+</html>

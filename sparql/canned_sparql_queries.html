@@ -1,21 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Emory Libraries Python Group</title>
-   <meta name="author" content="Emory Libraries Python Group" />
-   <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
-   <style type="text/css">
-/* Remove margins from the 'html' and 'body' tags, and ensure the page takes up full screen height */
-html, body {height:100%; margin:0; padding:0; font-family: Helvetica; font-size: 10pt;}
-/* Set the position and dimensions of the background image. */
-#page-background {position:fixed; top:0; left:0; width:100%; height:100%;}
-/* Specify the position and layering for the content that needs to appear in front of the background image. Must have a higher z-index value than the background image. Also add some padding to compensate for removing the margin from the 'html' and 'body' tags. */
-#content {position:relative; z-index:1; padding:10px;}
-</style>
-<!-- The above code doesn't work in Internet Explorer 6. To address this, we use a conditional comment to specify an alternative style sheet for IE 6 -->
+<meta charset="utf-8" />
+<meta name="robots" content="noindex" />
+<title>Sari Connard</title>
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 <!--[if IE 6]>
 <style type="text/css">
 html {overflow-y:hidden;}
@@ -24,17 +15,22 @@ body {overflow-y:auto;}
 #content {position:static;padding:10px;}
 </style>
 <![endif]-->
+<link rel="stylesheet" href="../style-html5.css" />
+<link rel="first" href="../index.html">
+<link rel=icon href=favicon.png sizes="20x20" type="../images/favicon.ico">
+
 </head>
 <body>
 <div id="page-background"><img src="../images/paper.jpg" width="100%" height="100%" alt="paper"></div>
 <div id="content">
-<a name="top"><h3>SAMPLE SPARQL Queries</h3></a>
+  <header>
+    <hgroup><h1>&#167;&nbsp;2012 ~ The Year of Black Water Dragon&nbsp;&#167;</h1></hgroup>
+    <nav><ul><li><a target="_blank" href="../index.html">home</a></li></ul></nav>
+  </header>
+<h2>SAMPLE SPARQL Queries</h2>
 <a target="_blank" href="sparql.html">SPARQL home</a>
 <p/>
-<a href="#gl">Georgia Lynching Queries</a>&nbsp;&nbsp;&nbsp;<a href="#empdept">EMP DEPT Queries</a>
-
-
-<h4><a name="empdept">EMP DEPT REPOSITORY SPARQL QUERIES</a></h4>
+<h4>EMP DEPT REPOSITORY SPARQL QUERIES</a></h4>
 # 01 List all employees
 <table width=600 border=1 bgcolor="tan">
 <tr><th>'emp_dept_01'</th></tr>
@@ -251,10 +247,6 @@ FILTER (!bound(?mgr))
 <p/>
 
 # 14 List the distinct locations of staff<br>
-# Result: loc<br>
-# <file://dbpedia.org/resource/New_York><br>
-# <file://dbpedia.org/resource/Dallas><br>
-# <file://dbpedia.org/resource/Chicago><br>
 <table width=600 border=1 bgcolor="tan">
 <tr><th>'emp_dept_14'</th></tr>
 <tr><td><pre>
@@ -778,244 +770,7 @@ select DISTINCT ?prop  where {
 </pre></td></tr>
 </table> 
 <p/>
-<hr/>
 <p/>
-<h4><a name="gl">Georgia Lynching Queries</a>&nbsp;<a href="#top">top</a></h4>
-
-<table width=600 border=1 bgcolor="burlywood">
-<tr><th>get_types</th></tr>
-<tr><td><pre>SELECT DISTINCT ?type WHERE { ?thing a ?type . } ORDER BY ?type'</pre></td></tr>
-</table> 
-<p/>
-<table width=600 border=1 bgcolor="burlywood">
-<tr><th>find_subtypes</th></tr>
-<tr><td><pre>
-PREFIX scx:&lt;http://galyn.example.com/source_data_files/setup_Complex.csv#&gt;
-PREFIX sxcxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Complex-Complex.csv#&gt;
-PREFIX sxsxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Simplex-Complex.csv#&gt;
-PREFIX ssx:&lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt; 
-select * where {
-  {
-    ?sxcxcx sxcxcx:HigherComplex scx:r1;
-            sxcxcx:Name ?name;
-            sxcxcx:LowerComplex ?lower.
-    ?lower scx:GrammarRule_Text ?rule.
-  } UNION {
-    ?sxsxcx sxsxcx:Complex scx:r1;
-            sxsxcx:Simplex ?ssx.
-    ?ssx ssx:Name ?name.
-  }
-}
-</pre></td></tr>
-</table> 
-<p/>
-
-
-# This query works in the GUI, but not in the API
-<table width=600 border=1 bgcolor="burlywood">
-<tr><th>'find_events_order_time'</th></tr>
-<tr><td><pre>
-PREFIX dcx:&lt;http://galyn.example.com/source_data_files/data_Complex.csv#&gt;
-PREFIX scx:&lt;http://galyn.example.com/source_data_files/setup_Complex.csv#&gt;
-PREFIX ssx:&lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt;
-PREFIX sxcxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Complex-Complex.csv#&gt;
-SELECT ?macro ?melabel ?event ?evlabel (MIN(?evdate) as ?mindate) (MAX(?evdate) as ?maxdate)
-WHERE {
-  ?macro a scx:r1;                  
-         dcx:Identifier ?melabel;
-         sxcxcx:r61 ?event.         
-  ?event dcx:Identifier ?evlabel;
-         sxcxcx:r62 ?_1.            
-  ?_1 sxcxcx:r64 ?_2.               
-  {
-    ?_2 sxcxcx:r78 ?_3. 
-    ?_3 sxcxcx:r103 ?_4. 
-    ?_4 sxcxcx:r104 ?_5. 
-  } UNION {
-    ?_2 sxcxcx:r47 ?_6.    
-    ?_6 sxcxcx:r79 ?_7. 
-    ?_7 sxcxcx:r103 ?_8. 
-    ?_8 sxcxcx:r104 ?_5. 
-  } UNION {
-    ?_2 sxcxcx:r47 ?_6.    
-    ?_6 sxcxcx:r80 ?_9. 
-    ?_9 sxcxcx:52 ?_7.    
-    ?_7 sxcxcx:r103 ?_8. 
-    ?_8 sxcxcx:r104 ?_5. 
-  } UNION {
-    ?_2 sxcxcx:r47 ?_6.    
-    ?_6 sxcxcx:r80 ?_9. 
-    ?_9 sxcxcx:r53 ?_10. 
-    ?_10 sxcxcx:r60 ?_5. 
-  }
-
-  ?_5 sxcxcx:r20 ?_11.  
-
-  {
-    ?_11 sxcxcx:r97 ?_12.     
-    ?_12 ssx:r66 ?evdate      
-  } UNION {
-    ?_11 sxcxcx:r22 ?_13.     
-    ?_13 sxcxcx:r4 ?_14.      
-    ?_14 ssx:r66 ?evdate      
-  } UNION {
-    ?_11 sxcxcx:r22 ?_13.     
-    ?_13 sxcxcx:r4 ?_14.      
-    ?_14 ssx:r68 ?evdate 
-  }
-}
-GROUP BY ?macro ?melabel ?event ?evlabel
-ORDER BY ?mindate
-</pre></td></tr>
-</table> 
-<p/>
-<table width=600 border=1 bgcolor="burlywood">
-<tr><th>'find_event_order_location'</th></tr>
-<tr><td><pre>
-PREFIX dcx:&lt;http://galyn.example.com/source_data_files/data_Complex.csv#&gt;
-PREFIX scx:&lt;http://galyn.example.com/source_data_files/setup_Complex.csv#&gt;
-PREFIX ssx:&lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt;
-PREFIX sxcxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Complex-Complex.csv#&gt;
-SELECT DISTINCT ?state ?county ?city ?event ?evlabel ?macro ?melabel
-WHERE {
-  ?macro a scx:r1;      
-         dcx:Identifier ?melabel;
-         sxcxcx:r61 ?event. 
-  ?event dcx:Identifier ?evlabel;
-         sxcxcx:r62 ?_1.   
-  ?_1 sxcxcx:r64 ?_2.    
-
-  {
-    ?_2 sxcxcx:r78 ?_3.  
-    ?_3 sxcxcx:r103 ?_4.  
-    ?_4 sxcxcx:r106 ?_5. 
-  } UNION {
-    ?_2 sxcxcx:r47 ?_6. 
-    ?_6 sxcxcx:r79 ?_3. 
-    ?_3 sxcxcx:r103 ?_4. 
-    ?_4 sxcxcx:r106 ?_5. 
-  } UNION {
-    ?_2 sxcxcx:r47 ?_6.      
-    ?_6 sxcxcx:r80 ?_7.     
-    ?_7 sxcxcx:52 ?_3.      
-    ?_3 sxcxcx:r103 ?_4.    
-    ?_4 sxcxcx:r106 ?_5.     
-  } UNION {
-    ?_2 sxcxcx:r47 ?_6.      
-    ?_6 sxcxcx:r80 ?_7.     
-    ?_7 sxcxcx:r53 ?_8.      
-    ?_8 sxcxcx:r59 ?_5.      
-  }
-  {
-    ?_5 sxcxcx:r2 ?_9.               
-    ?_9 sxcxcx:r41 ?_10.              
-  } UNION {
-    ?_5 sxcxcx:r3 ?_10.               
-  }
-  
-  OPTIONAL {
-    ?_10 ssx:r18 ?county.             
-    FILTER (?county != "?")
-  }
-  OPTIONAL {
-    ?_10 ssx:r30 ?state.              
-    FILTER (?state != "?")
-  }
-  OPTIONAL {
-    ?_10 ssx:r55 ?city.              
-    FILTER (?city != "?")
-  }
-  
-  FILTER (BOUND(?state) || BOUND(?county) || BOUND(?city))
-}
-ORDER BY UCASE(?state) UCASE(?county) UCASE(?city) ?event ?evlabel 
-</pre></td></tr>
-</table> 
-<p/>
-<table width=600 border=1 bgcolor="burlywood">
-<tr><th>'find_articles_for_event'</th></tr>
-<tr><td><pre>
-PREFIX dcx:&lt;http://galyn.example.com/source_data_files/data_Complex.csv#&gt;
-PREFIX dxcxd:&lt;http://galyn.example.com/source_data_files/data_xref_Complex-Document.csv#&gt;
-PREFIX scx:&lt;http://galyn.example.com/source_data_files/setup_Complex.csv#&gt;
-PREFIX ssx:&lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt;
-PREFIX sxcxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Complex-Complex.csv#&gt;
-
-SELECT DISTINCT ?melabel ?event ?evlabel ?dd ?docpath ?paperdate ?papername ?articlepage
-WHERE {
-  ?macro a scx:r1;                   
-         dcx:Identifier ?melabel;
-         sxcxcx:r61 ?event.         
-  ?event dcx:Identifier ?evlabel.
-
-  ?dxcxd dxcxd:Complex ?event;
-         dxcxd:Document ?dd.
-  optional { ?dd ssx:r68 ?paperdate }
-  optional { ?dd ssx:r69 ?papername }
-  optional { ?dd ssx:r73 ?articlepage }
-  optional { ?dd ssx:r85 ?docpath }              
-}
-ORDER BY ?event ?docpath
-</pre></td></tr>
-</table> 
-<p/>
-<table width=600 border=1 bgcolor="burlywood">
-<tr><th>'find_events_for_specific_person'</th></tr>
-<tr><td><pre>
-PREFIX dcx:&lt;http://galyn.example.com/source_data_files/data_Complex.csv#&gt;
-PREFIX sxcxcx:&lt;http://galyn.example.com/source_data_files/setup_xref_Complex-Complex.csv#&gt;
-SELECT ?triplet ?role ?trlabel ?event ?evlabel ?macro ?melabel 
-WHERE {
-  dcx:r4569 ^sxcxcx:r31 ?actor. 
-  {
-    ?actor ^sxcxcx:r30 ?participant. 
-    ?triplet sxcxcx:r63 ?participant. 
-    BIND("subject" as ?role)
-  } UNION {
-    ?actor ^sxcxcx:r35 ?participant.  
-    ?triplet sxcxcx:r65 ?participant.  
-    BIND("object" as ?role)
-  } 
-
-  ?triplet dcx:Identifier ?trlabel.
-  ?event sxcxcx:r62 ?triplet;       
-         dcx:Identifier ?evlabel.
-  ?macro sxcxcx:r61 ?event;          
-         dcx:Identifier ?melabel.      
-}
-</pre></td></tr>
-</table> 
-<p/>
-<table width=600 border=1 bgcolor="burlywood">
-<tr><th>'find_article_metadata_properties'</th></tr>
-<tr><td><pre>
-prefix dd: &lt;http://galyn.example.com/source_data_files/data_Document.csv#&gt;
-prefix ssx: &lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt;
-select distinct ?ssx ?name where {
-?dd a dd:Row;
-    ?ssx ?val.
-?ssx a ssx:Row;
-     ssx:Name ?name.
-}
-</pre></td></tr>
-</table>
-<p/>
-<table width=600 border=1 bgcolor="burlywood">
-<tr><th>'find_article_metadata'</th></tr>
-<tr><td><pre>
-prefix dd: &lt;http://galyn.example.com/source_data_files/data_Document.csv#&gt;
-prefix ssx: &lt;http://galyn.example.com/source_data_files/setup_Simplex.csv#&gt;
-
-select ?id ?paperdate ?papername ?articlepage ?path where {
-?dd a dd:Row;
-    dd:ID ?id.
-optional { ?dd ssx:r68 ?paperdate }
-optional { ?dd ssx:r69 ?papername }
-optional { ?dd ssx:r73 ?articlepage }
-optional { ?dd ssx:r85 ?path }
-} 
-</pre></td></tr>
-</table> 
 </div>
 </body>
 </html>

@@ -1,0 +1,379 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7369">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7369</f:EmpNo>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">SMITH</rdfs:label>
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">800</f:Sal>
+	        <f:Comm xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</f:Comm>
+	
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1993-06-13</f:HireDate>
+	        <f:Mgr xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp/7902"/>
+	        <f:MgrNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">7902</f:MgrNo>
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/20"/>
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">SMITH</foaf:surname>
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">CLERK</f:Job>
+	    </rdf:Description>
+	
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7499">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7499</f:EmpNo>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">ALLEN</rdfs:label>
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1600</f:Sal>
+	        <f:Comm xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">300</f:Comm>
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1998-08-15</f:HireDate>
+	
+	        <f:Mgr xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp/7698"/>
+	        <f:MgrNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">7698</f:MgrNo>
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/30"/>
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">ALLEN</foaf:surname>
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">SALESMAN</f:Job>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7521">
+	
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7521</f:EmpNo>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">WARD</rdfs:label>
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1250</f:Sal>
+	        <f:Comm xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</f:Comm>
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1996-03-26</f:HireDate>
+	
+	        <f:Mgr xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp/7698"/>
+	        <f:MgrNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">7698</f:MgrNo>
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/30"/>
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">WARD</foaf:surname>
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">SALESMAN</f:Job>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7566">
+	
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7566</f:EmpNo>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">JONES</rdfs:label>
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2975</f:Sal>
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1995-10-31</f:HireDate>
+	        <f:Mgr xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp/7839"/>
+	        <f:MgrNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">7839</f:MgrNo>
+	
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/20"/>
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">JONES</foaf:surname>
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">MANAGER</f:Job>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7698">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7698</f:EmpNo>
+	
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">BLAKE</rdfs:label>
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2850</f:Sal>
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1992-06-11</f:HireDate>
+	        <f:Mgr xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp/7839"/>
+	        <f:MgrNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">7839</f:MgrNo>
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/30"/>
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">BLAKE</foaf:surname>
+	
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">MANAGER</f:Job>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7782">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7782</f:EmpNo>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">CLARK</rdfs:label>
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2450</f:Sal>
+	
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1993-05-14</f:HireDate>
+	        <f:Mgr xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp/7839"/>
+	        <f:MgrNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">7839</f:MgrNo>
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/10"/>
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">CLARK</foaf:surname>
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">MANAGER</f:Job>
+	    </rdf:Description>
+	
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7788">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7788</f:EmpNo>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">SCOTT</rdfs:label>
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3000</f:Sal>
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1996-03-05</f:HireDate>
+	        <f:Mgr xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp/7566"/>
+	
+	        <f:MgrNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">7566</f:MgrNo>
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/20"/>
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">SCOTT</foaf:surname>
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">ANALYST</f:Job>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7839">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7839</f:EmpNo>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">KING</rdfs:label>
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5000</f:Sal>
+	        <f:Comm xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</f:Comm>
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1990-06-09</f:HireDate>
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/10"/>
+	
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">KING</foaf:surname>
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">PRESIDENT</f:Job>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7844">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7844</f:EmpNo>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">TURNER</rdfs:label>
+	
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1500</f:Sal>
+	        <f:Comm xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</f:Comm>
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1995-06-04</f:HireDate>
+	        <f:Mgr xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp/7698"/>
+	        <f:MgrNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">7698</f:MgrNo>
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/30"/>
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">TURNER</foaf:surname>
+	
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">SALESMAN</f:Job>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7876">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7876</f:EmpNo>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">ADAMS</rdfs:label>
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1100</f:Sal>
+	
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1999-06-04</f:HireDate>
+	        <f:Mgr xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp/7788"/>
+	        <f:MgrNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">7788</f:MgrNo>
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/20"/>
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">ADAMS</foaf:surname>
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">CLERK</f:Job>
+	    </rdf:Description>
+	
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7900">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7900</f:EmpNo>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">JAMES</rdfs:label>
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">950</f:Sal>
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-06-23</f:HireDate>
+	        <f:Mgr xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp/7698"/>
+	
+	        <f:MgrNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">7698</f:MgrNo>
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/30"/>
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">JAMES</foaf:surname>
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">CLERK</f:Job>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7934">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7934</f:EmpNo>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">MILLER</rdfs:label>
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1300</f:Sal>
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-01-21</f:HireDate>
+	        <f:Mgr xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp/7782"/>
+	        <f:MgrNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">7782</f:MgrNo>
+	
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/10"/>
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">MILLER</foaf:surname>
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">CLERK</f:Job>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7902">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7902</f:EmpNo>
+	
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">FORD</rdfs:label>
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3000</f:Sal>
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1997-12-05</f:HireDate>
+	        <f:Mgr xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp/7566"/>
+	        <f:MgrNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">7566</f:MgrNo>
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/20"/>
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">FORD</foaf:surname>
+	
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">ANALYST</f:Job>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/emp/7654">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <f:EmpNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7654</f:EmpNo>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">MARTIN</rdfs:label>
+	        <f:Sal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1250</f:Sal>
+	
+	        <f:Comm xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1400</f:Comm>
+	        <f:HireDate xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1998-12-05</f:HireDate>
+	        <f:Mgr xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp/7698"/>
+	        <f:MgrNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">7698</f:MgrNo>
+	        <f:Dept xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept/30"/>
+	        <foaf:surname xmlns:foaf="http://xmlns.com/foaf/0.1/">MARTIN</foaf:surname>
+	        <f:Job xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">SALESMAN</f:Job>
+	
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/emp">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">emp</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/EmpNo">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">EmpNo</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/Sal">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Sal</rdfs:label>
+	
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/Comm">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Comm</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/HireDate">
+	
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">HireDate</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/Mgr">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/emp"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Mgr</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/MgrNo">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/2000/01/rdf-schema#literal"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">MgrNo</rdfs:label>
+	
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/Dept">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/dept"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Dept</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/Job">
+	
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/emp"/>
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/2000/01/rdf-schema#literal"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Job</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/dept/10">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/dept"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Accounting</rdfs:label>
+	
+	        <f:Dname xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">Accounting</f:Dname>
+	        <f:Location xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="//dbpedia.org/resource/New_York"/>
+	        <f:DeptNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10</f:DeptNo>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/dept/20">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/dept"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Research</rdfs:label>
+	
+	        <f:Dname xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">Research</f:Dname>
+	        <f:Location xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="//dbpedia.org/resource/Dallas"/>
+	        <f:DeptNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">20</f:DeptNo>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/dept/30">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/dept"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Sales</rdfs:label>
+	
+	        <f:Dname xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">Sales</f:Dname>
+	        <f:Location xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="//dbpedia.org/resource/Chicago"/>
+	        <f:DeptNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">30</f:DeptNo>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/dept/40">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/dept"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Operations</rdfs:label>
+	
+	        <f:Dname xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/">Operations</f:Dname>
+	        <f:Location xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:resource="//dbpedia.org/resource/Boston"/>
+	        <f:DeptNo xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">40</f:DeptNo>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/dept">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">dept</rdfs:label>
+	
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/Dname">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/dept"/>
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/2000/01/rdf-schema#literal"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Dname</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/Location">
+	
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/dept"/>
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="//dbpedia.org/resource"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Location</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/DeptNo">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/dept"/>
+	
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">DeptNo</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/grade/1">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/salgrade"/>
+	        <f:HiSal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</f:HiSal>
+	        <f:LoSal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">700</f:LoSal>
+	
+	        <f:Grade xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</f:Grade>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">1</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/grade/2">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/salgrade"/>
+	        <f:HiSal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1400</f:HiSal>
+	        <f:LoSal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1201</f:LoSal>
+	
+	        <f:Grade xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</f:Grade>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">2</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/grade/4">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/salgrade"/>
+	        <f:HiSal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3000</f:HiSal>
+	        <f:LoSal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2001</f:LoSal>
+	
+	        <f:Grade xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</f:Grade>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">4</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/grade/5">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/salgrade"/>
+	        <f:HiSal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">99999</f:HiSal>
+	        <f:LoSal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3001</f:LoSal>
+	
+	        <f:Grade xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</f:Grade>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">5</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/grade/3">
+	        <rdf:type rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/salgrade"/>
+	        <f:HiSal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2000</f:HiSal>
+	        <f:LoSal xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1401</f:LoSal>
+	
+	        <f:Grade xmlns:f="http://www.cems.uwe.ac.uk/empdept/concept/" rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</f:Grade>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">3</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/salgrade">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">salgrade</rdfs:label>
+	    </rdf:Description>
+	
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/HiSal">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/salgrade"/>
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">HiSal</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/LoSal">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/salgrade"/>
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">LoSal</rdfs:label>
+	    </rdf:Description>
+	    <rdf:Description rdf:about="http://www.cems.uwe.ac.uk/empdept/concept/Grade">
+	        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	        <rdfs:domain xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.cems.uwe.ac.uk/empdept/concept/salgrade"/>
+	        <rdfs:range xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+	
+	        <rdfs:label xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">Grade</rdfs:label>
+	    </rdf:Description>
+	</rdf:RDF>
